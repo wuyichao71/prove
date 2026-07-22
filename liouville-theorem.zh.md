@@ -48,7 +48,7 @@ $$
 dQ\,dP = dq\,dp.
 $$
 
-**证明一**（连续性方程法）证明第一种表述；**证明二**（正则变换法）证明第二种表述。
+**证明一**（连续性方程法）证明第一种表述；**证明二**（几何面积法）与**证明四**（正则变换法）从不同角度证明第二种表述（**证明三**待补）。
 
 ---
 
@@ -133,11 +133,106 @@ $$
 
 ---
 
-## 5. 证明二：正则变换下的体积不变性
+## 5. 证明二：时间演化下相空间面积不变（几何面积法）
+
+> 对应笔记 5 张图。不借助雅可比行列式，直接追踪一个无穷小面积元的四个顶点在哈密顿流下的运动，用初等的"边界条带面积"算出面积改变量，证明它为零。
+
+### 5.1 无穷小面积元的顶点演化
+
+在相空间取一个无穷小矩形，四顶点为
+
+$$
+A=(q,\ p),\quad
+B=(q+\delta q,\ p),\quad
+C=(q,\ p+\delta p),\quad
+D=(q+\delta q,\ p+\delta p),
+$$
+
+面积为 $\delta q\,\delta p$。经过无穷小时间 $dt$，每个相点按哈密顿流移动
+
+$$
+(q,\ p)\ \longrightarrow\ \big(q+\dot q(q,p)\,dt,\ \ p+\dot p(q,p)\,dt\big),
+\qquad
+\dot q=\frac{\partial H}{\partial p},\quad \dot p=-\frac{\partial H}{\partial q}.
+$$
+
+由于速度场 $(\dot q,\dot p)$ 随位置变化，四个顶点的位移各不相同，矩形被拉成一个（曲边）平行四边形。四顶点分别映为
+
+$$
+\begin{aligned}
+A&\longrightarrow\big(q+\dot q(q,p)\,dt,\ \ p+\dot p(q,p)\,dt\big),\\
+B&\longrightarrow\big(q+\delta q+\dot q(q+\delta q,p)\,dt,\ \ p+\dot p(q+\delta q,p)\,dt\big),\\
+C&\longrightarrow\big(q+\dot q(q,p+\delta p)\,dt,\ \ p+\delta p+\dot p(q,p+\delta p)\,dt\big),\\
+D&\longrightarrow\big(q+\delta q+\dot q(q+\delta q,p+\delta p)\,dt,\ \ p+\delta p+\dot p(q+\delta q,p+\delta p)\,dt\big).
+\end{aligned}
+$$
+
+### 5.2 用边界条带算面积改变量
+
+把演化后的面积写成"原矩形面积 $+$ 四条边界条带的净贡献"。记左、右、下、上四条边随流扫过的条带面积为 $S_1,S_2,S_3,S_4$（对应笔记图中的标注），面积改变量为
+
+$$
+\Delta S=(S_2-S_1)+(S_4-S_3).
+$$
+
+**水平方向（左、右两条竖直边）。** 右边（在 $q+\delta q$ 处）与左边（在 $q$ 处）沿 $q$ 方向的位移分别是 $\dot q(q+\delta q,p)\,dt$ 与 $\dot q(q,p)\,dt$；两者之差乘以竖直边长 $\delta p$，即为右、左条带的面积差
+
+$$
+S_2-S_1
+=\big[\dot q(q+\delta q,p)-\dot q(q,p)\big]\,dt\,\cdot\,\delta p
+=\frac{\partial \dot q}{\partial q}\,\delta q\,\delta p\,dt+O(\delta q^{2}).
+$$
+
+**竖直方向（上、下两条水平边）。** 同理，上边（在 $p+\delta p$ 处）与下边（在 $p$ 处）沿 $p$ 方向的位移之差乘以水平边长 $\delta q$
+
+$$
+S_4-S_3
+=\big[\dot p(q,p+\delta p)-\dot p(q,p)\big]\,dt\,\cdot\,\delta q
+=\frac{\partial \dot p}{\partial p}\,\delta p\,\delta q\,dt+O(\delta p^{2}).
+$$
+
+> 笔记中把每条条带当作梯形，用梯形面积公式逐项展开（第 4、5 张图），结果与上面的领头阶完全一致；更高阶的 $O(dt^{2})$、$O(\delta^{3})$ 项可略去。
+
+### 5.3 散度为零：面积不变
+
+两式相加：
+
+$$
+\Delta S=(S_2-S_1)+(S_4-S_3)
+=\left(\frac{\partial \dot q}{\partial q}+\frac{\partial \dot p}{\partial p}\right)\delta q\,\delta p\,dt
+=(\nabla\cdot\vec v)\,\delta q\,\delta p\,dt.
+$$
+
+代入哈密顿方程 $\dot q=\partial H/\partial p$、$\dot p=-\partial H/\partial q$，括号内正是相流散度，而
+
+$$
+\frac{\partial \dot q}{\partial q}+\frac{\partial \dot p}{\partial p}
+=\frac{\partial^{2} H}{\partial q\,\partial p}-\frac{\partial^{2} H}{\partial p\,\partial q}=0,
+$$
+
+故
+
+$$
+\boxed{\ \Delta S=0\ }.
+$$
+
+即演化后面积仍为 $\delta q\,\delta p$。对有限时间，把无穷小步逐次相乘，面积恒保持不变。 $\blacksquare$
+
+这与**证明四**（正则变换／雅可比）是同一结论的两种视角：那里算 $\det J=1+(\nabla\cdot\vec v)\,dt$，这里算 $\Delta S=(\nabla\cdot\vec v)\,\delta q\,\delta p\,dt$——本质都是 $\nabla\cdot\vec v=0$。
+
+---
+
+## 6. 证明三（待补）
+
+> 此处留待你补充下一个证明。
+
+---
+
+## 7. 证明四：正则变换下的体积不变性
 
 > 对应笔记第 2、3 张图。**先证明一般正则变换保持相空间体积**，再把时间演化作为无穷小正则变换的特例联系回来。
 
-### 5.1 正则变换保持相空间体积
+### 7.1 正则变换保持相空间体积
 
 考虑一个变换 $(q,p)\to(Q,P)$。所谓**正则变换**，是指在新变量下运动方程仍保持哈密顿形式：
 
@@ -169,7 +264,7 @@ $$
 = \frac{\partial Q}{\partial q}\dot q + \frac{\partial Q}{\partial p}\dot p
 = \frac{\partial Q}{\partial q}\frac{\partial H}{\partial p}
 - \frac{\partial Q}{\partial p}\frac{\partial H}{\partial q}.
-\tag{5.1}
+\tag{7.1}
 $$
 
 另一方面，把 $H$ 看作新变量 $(Q,P)$ 的函数，用链式法则展开 $\partial H/\partial P$：
@@ -178,16 +273,16 @@ $$
 \frac{\partial H}{\partial P}
 = \frac{\partial H}{\partial q}\frac{\partial q}{\partial P}
 + \frac{\partial H}{\partial p}\frac{\partial p}{\partial P}.
-\tag{5.2}
+\tag{7.2}
 $$
 
-正则变换要求 (5.1) = (5.2)，即 $\dot Q = \partial H/\partial P$。由于该式须对任意哈密顿量 $H$ 成立，比较 $\partial H/\partial q$ 与 $\partial H/\partial p$ 的系数，得到变换的两组关系：
+正则变换要求 (7.1) = (7.2)，即 $\dot Q = \partial H/\partial P$。由于该式须对任意哈密顿量 $H$ 成立，比较 $\partial H/\partial q$ 与 $\partial H/\partial p$ 的系数，得到变换的两组关系：
 
 $$
 \frac{\partial Q}{\partial p} = -\frac{\partial q}{\partial P},
 \qquad
 \frac{\partial Q}{\partial q} = \frac{\partial p}{\partial P}.
-\tag{5.3}
+\tag{7.3}
 $$
 
 同理，对 $\dot P = -\partial H/\partial Q$ 做相同处理，得到
@@ -196,10 +291,10 @@ $$
 \frac{\partial P}{\partial p} = \frac{\partial q}{\partial Q},
 \qquad
 \frac{\partial P}{\partial q} = -\frac{\partial p}{\partial Q}.
-\tag{5.4}
+\tag{7.4}
 $$
 
-把 (5.3)、(5.4) 代入雅可比：
+把 (7.3)、(7.4) 代入雅可比：
 
 $$
 \{Q,P\}
@@ -230,7 +325,7 @@ $$
 > 用矩阵语言，正则变换的雅可比矩阵 $J$ 满足**辛条件** $J^{\mathsf T}\Omega J = \Omega$，其中
 > $\Omega = \begin{pmatrix}0&1\\-1&0\end{pmatrix}$ 是辛形式。两边取行列式即得 $(\det J)^2 = 1$，与上面结论一致。
 
-### 5.2 时间演化是无穷小正则变换
+### 7.2 时间演化是无穷小正则变换
 
 时间演化本身就是一族单参数正则变换：经过无穷小时间 $dt$，相点按哈密顿方程移动
 
@@ -240,7 +335,7 @@ $$
 = (q + \dot q\,dt,\ \ p + \dot p\,dt).
 $$
 
-由 5.1 节的一般结论，它必然保持体积。也可以直接验证——计算此映射的雅可比并展开到 $O(dt)$：
+由 7.1 节的一般结论，它必然保持体积。也可以直接验证——计算此映射的雅可比并展开到 $O(dt)$：
 
 $$
 \frac{\partial Q}{\partial q} = 1 + \frac{\partial \dot q}{\partial q}\,dt,
@@ -270,11 +365,11 @@ dQ\,dP = dq\,dp .
 \qquad\blacksquare
 $$
 
-对有限时间，只需把无穷小步连乘，行列式仍恒为 1。这既与 5.1 节的正则变换结论一致，也把证明二接回了证明一：**"散度为零"与"雅可比为一"是同一件事的一阶体现**。
+对有限时间，只需把无穷小步连乘，行列式仍恒为 1。这既与 7.1 节的正则变换结论一致，也把证明四接回了证明一：**"散度为零"与"雅可比为一"是同一件事的一阶体现**。
 
 ---
 
-## 6. 泊松括号形式
+## 8. 泊松括号形式
 
 引入**泊松括号**
 
@@ -302,7 +397,7 @@ $$
 
 ---
 
-## 7. 物理意义
+## 9. 物理意义
 
 - **不可压缩相流：** $\nabla\cdot\vec v = 0$ 意味着代表点构成的"流体"既不被压缩也不膨胀。一团初始占据面积 $A$ 的相点，演化后形状可以被强烈拉伸、扭曲（如笔记第 3 张图所画的平行四边形变形），但**面积/体积始终保持 $A$ 不变**。
 
@@ -310,7 +405,7 @@ $$
 
 - **统计力学基础：** 刘维尔定理是**微正则系综**中"等概率假设"的动力学依据：在能量壳层上均匀的密度分布 $\rho = \text{const}$ 是刘维尔方程的定态解（$\partial\rho/\partial t = 0$），因而是自然的平衡态分布。
 
-- **两种证明的统一：** 证明一的核心 $\nabla\cdot\vec v = 0$ 与证明二的核心 $\det J = 1$ **本质是同一件事**——因为雅可比行列式展开到一阶恰为
+- **各证明的统一：** 证明一的核心 $\nabla\cdot\vec v = 0$、证明二的面积改变量 $\Delta S=(\nabla\cdot\vec v)\,\delta q\,\delta p\,dt$ 与证明四的 $\det J = 1$ **本质是同一件事**——因为雅可比行列式展开到一阶恰为
 $$
 \det J = 1 + (\nabla\cdot\vec v)\,dt + O(dt^2),
 $$

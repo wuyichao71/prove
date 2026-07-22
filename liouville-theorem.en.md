@@ -48,7 +48,7 @@ $$
 dQ\,dP = dq\,dp.
 $$
 
-**Proof 1** (continuity equation) establishes the first; **Proof 2** (canonical transformations) establishes the second.
+**Proof 1** (continuity equation) establishes the first; **Proof 2** (geometric area method) and **Proof 4** (canonical transformations) establish the second from different angles (**Proof 3** to be added).
 
 ---
 
@@ -133,11 +133,106 @@ $$
 
 ---
 
-## 5. Proof 2 — Volume Invariance under Canonical Transformations
+## 5. Proof 2 — Phase-Space Area Is Invariant under Time Evolution (geometric area method)
+
+> Corresponds to the five pages of notes. Without invoking the Jacobian determinant, track the four corners of an infinitesimal area element under the Hamiltonian flow and compute the change in area from the elementary "boundary-strip areas," showing it vanishes.
+
+### 5.1 Evolution of the corners of an infinitesimal area element
+
+Take an infinitesimal rectangle in phase space with corners
+
+$$
+A=(q,\ p),\quad
+B=(q+\delta q,\ p),\quad
+C=(q,\ p+\delta p),\quad
+D=(q+\delta q,\ p+\delta p),
+$$
+
+of area $\delta q\,\delta p$. After an infinitesimal time $dt$, each point moves along the Hamiltonian flow,
+
+$$
+(q,\ p)\ \longrightarrow\ \big(q+\dot q(q,p)\,dt,\ \ p+\dot p(q,p)\,dt\big),
+\qquad
+\dot q=\frac{\partial H}{\partial p},\quad \dot p=-\frac{\partial H}{\partial q}.
+$$
+
+Because the velocity field $(\dot q,\dot p)$ varies with position, the four corners are displaced differently and the rectangle is sheared into a (curvilinear) parallelogram. The corners map to
+
+$$
+\begin{aligned}
+A&\longrightarrow\big(q+\dot q(q,p)\,dt,\ \ p+\dot p(q,p)\,dt\big),\\
+B&\longrightarrow\big(q+\delta q+\dot q(q+\delta q,p)\,dt,\ \ p+\dot p(q+\delta q,p)\,dt\big),\\
+C&\longrightarrow\big(q+\dot q(q,p+\delta p)\,dt,\ \ p+\delta p+\dot p(q,p+\delta p)\,dt\big),\\
+D&\longrightarrow\big(q+\delta q+\dot q(q+\delta q,p+\delta p)\,dt,\ \ p+\delta p+\dot p(q+\delta q,p+\delta p)\,dt\big).
+\end{aligned}
+$$
+
+### 5.2 The change in area from the boundary strips
+
+Write the evolved area as "the original rectangle $+$ the net contribution of the four boundary strips." Let $S_1,S_2,S_3,S_4$ be the areas swept by the left, right, bottom and top edges (labelled as in the notes); the change in area is
+
+$$
+\Delta S=(S_2-S_1)+(S_4-S_3).
+$$
+
+**Horizontal (the left and right vertical edges).** The right edge (at $q+\delta q$) and the left edge (at $q$) are displaced along $q$ by $\dot q(q+\delta q,p)\,dt$ and $\dot q(q,p)\,dt$; their difference times the edge length $\delta p$ gives
+
+$$
+S_2-S_1
+=\big[\dot q(q+\delta q,p)-\dot q(q,p)\big]\,dt\,\cdot\,\delta p
+=\frac{\partial \dot q}{\partial q}\,\delta q\,\delta p\,dt+O(\delta q^{2}).
+$$
+
+**Vertical (the top and bottom horizontal edges).** Likewise, the top edge (at $p+\delta p$) and the bottom edge (at $p$) differ in their $p$-displacement, times the edge length $\delta q$:
+
+$$
+S_4-S_3
+=\big[\dot p(q,p+\delta p)-\dot p(q,p)\big]\,dt\,\cdot\,\delta q
+=\frac{\partial \dot p}{\partial p}\,\delta p\,\delta q\,dt+O(\delta p^{2}).
+$$
+
+> The notes treat each strip as a trapezoid and expand its area term by term (pages 4–5); the result agrees with the leading order above, and the higher-order $O(dt^{2})$, $O(\delta^{3})$ terms are dropped.
+
+### 5.3 Divergence-free means area-preserving
+
+Adding the two,
+
+$$
+\Delta S=(S_2-S_1)+(S_4-S_3)
+=\left(\frac{\partial \dot q}{\partial q}+\frac{\partial \dot p}{\partial p}\right)\delta q\,\delta p\,dt
+=(\nabla\cdot\vec v)\,\delta q\,\delta p\,dt.
+$$
+
+Substituting Hamilton's equations $\dot q=\partial H/\partial p$, $\dot p=-\partial H/\partial q$, the bracket is exactly the divergence of the flow, and
+
+$$
+\frac{\partial \dot q}{\partial q}+\frac{\partial \dot p}{\partial p}
+=\frac{\partial^{2} H}{\partial q\,\partial p}-\frac{\partial^{2} H}{\partial p\,\partial q}=0,
+$$
+
+hence
+
+$$
+\boxed{\ \Delta S=0\ }.
+$$
+
+so the evolved area is still $\delta q\,\delta p$. For finite times, compose the infinitesimal steps and the area is preserved throughout. $\blacksquare$
+
+This is the same conclusion as **Proof 4** (canonical transformations / Jacobian) seen from another angle: there one computes $\det J=1+(\nabla\cdot\vec v)\,dt$, here $\Delta S=(\nabla\cdot\vec v)\,\delta q\,\delta p\,dt$ — both reduce to $\nabla\cdot\vec v=0$.
+
+---
+
+## 6. Proof 3 (to be added)
+
+> Reserved for your next proof.
+
+---
+
+## 7. Proof 4 — Volume Invariance under Canonical Transformations
 
 > Corresponds to the second and third pages of notes. **First prove that a general canonical transformation preserves phase-space volume**, then connect back by treating time evolution as an infinitesimal canonical transformation.
 
-### 5.1 A canonical transformation preserves phase-space volume
+### 7.1 A canonical transformation preserves phase-space volume
 
 Consider a transformation $(q,p)\to(Q,P)$. A **canonical transformation** is one that keeps the equations of motion in Hamiltonian form in the new variables:
 
@@ -169,7 +264,7 @@ $$
 = \frac{\partial Q}{\partial q}\dot q + \frac{\partial Q}{\partial p}\dot p
 = \frac{\partial Q}{\partial q}\frac{\partial H}{\partial p}
 - \frac{\partial Q}{\partial p}\frac{\partial H}{\partial q}.
-\tag{5.1}
+\tag{7.1}
 $$
 
 On the other hand, regard $H$ as a function of the new variables $(Q,P)$ and expand $\partial H/\partial P$ by the chain rule:
@@ -178,16 +273,16 @@ $$
 \frac{\partial H}{\partial P}
 = \frac{\partial H}{\partial q}\frac{\partial q}{\partial P}
 + \frac{\partial H}{\partial p}\frac{\partial p}{\partial P}.
-\tag{5.2}
+\tag{7.2}
 $$
 
-Being canonical requires (5.1) = (5.2), i.e. $\dot Q = \partial H/\partial P$. Since this must hold for an arbitrary Hamiltonian $H$, matching the coefficients of $\partial H/\partial q$ and $\partial H/\partial p$ yields two sets of relations:
+Being canonical requires (7.1) = (7.2), i.e. $\dot Q = \partial H/\partial P$. Since this must hold for an arbitrary Hamiltonian $H$, matching the coefficients of $\partial H/\partial q$ and $\partial H/\partial p$ yields two sets of relations:
 
 $$
 \frac{\partial Q}{\partial p} = -\frac{\partial q}{\partial P},
 \qquad
 \frac{\partial Q}{\partial q} = \frac{\partial p}{\partial P}.
-\tag{5.3}
+\tag{7.3}
 $$
 
 Doing the same for $\dot P = -\partial H/\partial Q$ gives
@@ -196,10 +291,10 @@ $$
 \frac{\partial P}{\partial p} = \frac{\partial q}{\partial Q},
 \qquad
 \frac{\partial P}{\partial q} = -\frac{\partial p}{\partial Q}.
-\tag{5.4}
+\tag{7.4}
 $$
 
-Substituting (5.3) and (5.4) into the Jacobian:
+Substituting (7.3) and (7.4) into the Jacobian:
 
 $$
 \{Q,P\}
@@ -229,7 +324,7 @@ $$
 
 > In matrix language, the Jacobian matrix $J$ of a canonical transformation satisfies the **symplectic condition** $J^{\mathsf T}\Omega J = \Omega$, where $\Omega = \begin{pmatrix}0&1\\-1&0\end{pmatrix}$ is the symplectic form. Taking determinants of both sides gives $(\det J)^2 = 1$, consistent with the result above.
 
-### 5.2 Time evolution is an infinitesimal canonical transformation
+### 7.2 Time evolution is an infinitesimal canonical transformation
 
 Time evolution is itself a one-parameter family of canonical transformations: after an infinitesimal time $dt$, a phase point moves according to Hamilton's equations,
 
@@ -239,7 +334,7 @@ $$
 = (q + \dot q\,dt,\ \ p + \dot p\,dt).
 $$
 
-By the general result of §5.1 it must preserve volume. One can also verify this directly — compute the Jacobian of this map and expand to $O(dt)$:
+By the general result of §7.1 it must preserve volume. One can also verify this directly — compute the Jacobian of this map and expand to $O(dt)$:
 
 $$
 \frac{\partial Q}{\partial q} = 1 + \frac{\partial \dot q}{\partial q}\,dt,
@@ -269,11 +364,11 @@ dQ\,dP = dq\,dp .
 \qquad\blacksquare
 $$
 
-For finite times, simply compose the infinitesimal steps; the determinant stays identically 1. This agrees with the canonical-transformation result of §5.1 and ties Proof 2 back to Proof 1: **"divergence-free" and "unit Jacobian" are the same fact, at first order.**
+For finite times, simply compose the infinitesimal steps; the determinant stays identically 1. This agrees with the canonical-transformation result of §7.1 and ties Proof 4 back to Proof 1: **"divergence-free" and "unit Jacobian" are the same fact, at first order.**
 
 ---
 
-## 6. Poisson-Bracket Form
+## 8. Poisson-Bracket Form
 
 Introducing the **Poisson bracket**
 
@@ -301,7 +396,7 @@ where the classical Poisson bracket $\{\cdot,\cdot\}$ corresponds to the quantum
 
 ---
 
-## 7. Physical Interpretation
+## 9. Physical Interpretation
 
 - **Incompressible phase flow:** $\nabla\cdot\vec v = 0$ means the "fluid" of representative points is neither compressed nor expanded. A blob of phase points initially occupying an area $A$ can be strongly stretched and distorted (like the deformed parallelogram sketched on the third page of notes), yet its **area/volume always remains $A$**.
 
@@ -309,7 +404,7 @@ where the classical Poisson bracket $\{\cdot,\cdot\}$ corresponds to the quantum
 
 - **Foundation of statistical mechanics:** Liouville's Theorem is the dynamical basis for the "equal a priori probability" postulate of the **microcanonical ensemble**: a density $\rho = \text{const}$ that is uniform on the energy shell is a stationary solution of the Liouville equation ($\partial\rho/\partial t = 0$), and hence a natural equilibrium distribution.
 
-- **Unifying the two proofs:** the core of Proof 1, $\nabla\cdot\vec v = 0$, and the core of Proof 2, $\det J = 1$, are **the same fact** — because the Jacobian expanded to first order is exactly
+- **Unifying the proofs:** the core of Proof 1, $\nabla\cdot\vec v = 0$, the area change of Proof 2, $\Delta S=(\nabla\cdot\vec v)\,\delta q\,\delta p\,dt$, and Proof 4's $\det J = 1$ are **the same fact** — because the Jacobian expanded to first order is exactly
 $$
 \det J = 1 + (\nabla\cdot\vec v)\,dt + O(dt^2),
 $$
