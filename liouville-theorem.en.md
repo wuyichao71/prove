@@ -148,10 +148,10 @@ C=(q,\ p+\delta p),\quad
 D=(q+\delta q,\ p+\delta p),
 $$
 
-of area $\delta q\,\delta p$. After an infinitesimal time $dt$, each point moves along the Hamiltonian flow,
+of area $\delta q\,\delta p$. After an infinitesimal time $\delta t$, each point moves along the Hamiltonian flow,
 
 $$
-(q,\ p)\ \longrightarrow\ \big(q+\dot q(q,p)\,dt,\ \ p+\dot p(q,p)\,dt\big),
+(q,\ p)\ \longrightarrow\ \big(q+\dot q(q,p)\,\delta t,\ \ p+\dot p(q,p)\,\delta t\big),
 \qquad
 \dot q=\frac{\partial H}{\partial p},\quad \dot p=-\frac{\partial H}{\partial q}.
 $$
@@ -160,10 +160,10 @@ Because the velocity field $(\dot q,\dot p)$ varies with position, the four corn
 
 $$
 \begin{aligned}
-A&\longrightarrow\big(q+\dot q(q,p)\,dt,\ \ p+\dot p(q,p)\,dt\big),\\
-B&\longrightarrow\big(q+\delta q+\dot q(q+\delta q,p)\,dt,\ \ p+\dot p(q+\delta q,p)\,dt\big),\\
-C&\longrightarrow\big(q+\dot q(q,p+\delta p)\,dt,\ \ p+\delta p+\dot p(q,p+\delta p)\,dt\big),\\
-D&\longrightarrow\big(q+\delta q+\dot q(q+\delta q,p+\delta p)\,dt,\ \ p+\delta p+\dot p(q+\delta q,p+\delta p)\,dt\big).
+A&\longrightarrow\big(q+\dot q(q,p)\,\delta t,\ \ p+\dot p(q,p)\,\delta t\big),\\
+B&\longrightarrow\big(q+\delta q+\dot q(q+\delta q,p)\,\delta t,\ \ p+\dot p(q+\delta q,p)\,\delta t\big),\\
+C&\longrightarrow\big(q+\dot q(q,p+\delta p)\,\delta t,\ \ p+\delta p+\dot p(q,p+\delta p)\,\delta t\big),\\
+D&\longrightarrow\big(q+\delta q+\dot q(q+\delta q,p+\delta p)\,\delta t,\ \ p+\delta p+\dot p(q+\delta q,p+\delta p)\,\delta t\big).
 \end{aligned}
 $$
 
@@ -171,7 +171,7 @@ $$
 
 ![Infinitesimal phase-space area element and its four boundary strips S1–S4](fig-liouville-area-strips.svg)
 
-*Figure.* The infinitesimal area element $\delta q\times\delta p$ (black box) and its four boundary strips: $S_1,S_2$ (left, right) come from the displacement $\dot q\,dt$ along $q$; $S_3,S_4$ (bottom, top) come from the displacement $\dot p\,dt$ along $p$. The leading edges (right, top) count as positive area swept, the trailing edges (left, bottom) as negative.
+*Figure.* The infinitesimal area element $\delta q\times\delta p$ (black box) and its four boundary strips: $S_1,S_2$ (left, right) come from the displacement $\dot q\,\delta t$ along $q$; $S_3,S_4$ (bottom, top) come from the displacement $\dot p\,\delta t$ along $p$. The leading edges (right, top) count as positive area swept, the trailing edges (left, bottom) as negative.
 
 Write the evolved area as "the original rectangle $+$ the net contribution of the four boundary strips." Let $S_1,S_2,S_3,S_4$ be the areas swept by the left, right, bottom and top edges (labelled as in the notes); the change in area is
 
@@ -179,23 +179,23 @@ $$
 \Delta S=(S_2-S_1)+(S_4-S_3).
 $$
 
-**Horizontal (the left and right vertical edges).** The right edge (at $q+\delta q$) and the left edge (at $q$) are displaced along $q$ by $\dot q(q+\delta q,p)\,dt$ and $\dot q(q,p)\,dt$; their difference times the edge length $\delta p$ gives
+**Horizontal (the left and right vertical edges).** The right edge (at $q+\delta q$) and the left edge (at $q$) are displaced along $q$ by $\dot q(q+\delta q,p)\,\delta t$ and $\dot q(q,p)\,\delta t$; their difference times the edge length $\delta p$ gives
 
 $$
 S_2-S_1
-=\big[\dot q(q+\delta q,p)-\dot q(q,p)\big]\,dt\,\cdot\,\delta p
-=\frac{\partial \dot q}{\partial q}\,\delta q\,\delta p\,dt+O(\delta q^{2}).
+=\big[\dot q(q+\delta q,p)-\dot q(q,p)\big]\,\delta t\,\cdot\,\delta p
+=\frac{\partial \dot q}{\partial q}\,\delta q\,\delta p\,\delta t+O(\delta q^{2}).
 $$
 
 **Vertical (the top and bottom horizontal edges).** Likewise, the top edge (at $p+\delta p$) and the bottom edge (at $p$) differ in their $p$-displacement, times the edge length $\delta q$:
 
 $$
 S_4-S_3
-=\big[\dot p(q,p+\delta p)-\dot p(q,p)\big]\,dt\,\cdot\,\delta q
-=\frac{\partial \dot p}{\partial p}\,\delta p\,\delta q\,dt+O(\delta p^{2}).
+=\big[\dot p(q,p+\delta p)-\dot p(q,p)\big]\,\delta t\,\cdot\,\delta q
+=\frac{\partial \dot p}{\partial p}\,\delta p\,\delta q\,\delta t+O(\delta p^{2}).
 $$
 
-> The notes treat each strip as a trapezoid and expand its area term by term (pages 4–5); the result agrees with the leading order above, and the higher-order $O(dt^{2})$, $O(\delta^{3})$ terms are dropped.
+> The notes treat each strip as a trapezoid and expand its area term by term (pages 4–5); the result agrees with the leading order above, and the higher-order $O(\delta t^{2})$, $O(\delta^{3})$ terms are dropped.
 
 ### 5.3 Divergence-free means area-preserving
 
@@ -203,8 +203,8 @@ Adding the two,
 
 $$
 \Delta S=(S_2-S_1)+(S_4-S_3)
-=\left(\frac{\partial \dot q}{\partial q}+\frac{\partial \dot p}{\partial p}\right)\delta q\,\delta p\,dt
-=(\nabla\cdot\vec v)\,\delta q\,\delta p\,dt.
+=\left(\frac{\partial \dot q}{\partial q}+\frac{\partial \dot p}{\partial p}\right)\delta q\,\delta p\,\delta t
+=(\nabla\cdot\vec v)\,\delta q\,\delta p\,\delta t.
 $$
 
 Substituting Hamilton's equations $\dot q=\partial H/\partial p$, $\dot p=-\partial H/\partial q$, the bracket is exactly the divergence of the flow, and
@@ -222,7 +222,7 @@ $$
 
 so the evolved area is still $\delta q\,\delta p$. For finite times, compose the infinitesimal steps and the area is preserved throughout. $\blacksquare$
 
-This is the same conclusion as **Proof 3** (time-evolution Jacobian method) by a different route: there one computes $\det J=1+(\nabla\cdot\vec v)\,dt$, here $\Delta S=(\nabla\cdot\vec v)\,\delta q\,\delta p\,dt$ — both reduce to $\nabla\cdot\vec v=0$.
+This is the same conclusion as **Proof 3** (time-evolution Jacobian method) by a different route: there one computes $\det J=1+(\nabla\cdot\vec v)\,\delta t$, here $\Delta S=(\nabla\cdot\vec v)\,\delta q\,\delta p\,\delta t$ — both reduce to $\nabla\cdot\vec v=0$.
 
 ---
 
@@ -230,45 +230,45 @@ This is the same conclusion as **Proof 3** (time-evolution Jacobian method) by a
 
 > Treat time evolution itself as a map on phase space and compute its Jacobian determinant directly; expanded to first order it equals 1. This is the infinitesimal special case of Proof 4 (canonical transformations), verified here independently using only Hamilton's equations and $\nabla\cdot\vec v=0$ from Proof 1.
 
-After an infinitesimal time $dt$, a phase point moves according to Hamilton's equations, giving the map $(q,p)\to(Q,P)$:
+After an infinitesimal time $\delta t$, a phase point moves according to Hamilton's equations, giving the map $(q,p)\to(Q,P)$:
 
 $$
 (q,\ p)\ \longrightarrow\ (Q,\ P)
-= \left(\,q + \frac{\partial H}{\partial p}\,dt,\ \ p - \frac{\partial H}{\partial q}\,dt\,\right)
-= (q + \dot q\,dt,\ \ p + \dot p\,dt).
+= \left(\,q + \frac{\partial H}{\partial p}\,\delta t,\ \ p - \frac{\partial H}{\partial q}\,\delta t\,\right)
+= (q + \dot q\,\delta t,\ \ p + \dot p\,\delta t).
 $$
 
-Compute the Jacobian matrix of this map, each entry expanded to $O(dt)$:
+Compute the Jacobian matrix of this map, each entry expanded to $O(\delta t)$:
 
 $$
-\frac{\partial Q}{\partial q} = 1 + \frac{\partial \dot q}{\partial q}\,dt,
+\frac{\partial Q}{\partial q} = 1 + \frac{\partial \dot q}{\partial q}\,\delta t,
 \quad
-\frac{\partial Q}{\partial p} = \frac{\partial \dot q}{\partial p}\,dt,
+\frac{\partial Q}{\partial p} = \frac{\partial \dot q}{\partial p}\,\delta t,
 \quad
-\frac{\partial P}{\partial q} = \frac{\partial \dot p}{\partial q}\,dt,
+\frac{\partial P}{\partial q} = \frac{\partial \dot p}{\partial q}\,\delta t,
 \quad
-\frac{\partial P}{\partial p} = 1 + \frac{\partial \dot p}{\partial p}\,dt,
+\frac{\partial P}{\partial p} = 1 + \frac{\partial \dot p}{\partial p}\,\delta t,
 $$
 
 so that
 
 $$
 \det J
-= \left(1 + \frac{\partial \dot q}{\partial q}dt\right)\!\left(1 + \frac{\partial \dot p}{\partial p}dt\right)
-- \left(\frac{\partial \dot q}{\partial p}dt\right)\!\left(\frac{\partial \dot p}{\partial q}dt\right)
-= 1 + \left(\frac{\partial \dot q}{\partial q} + \frac{\partial \dot p}{\partial p}\right)dt + O(dt^2).
+= \left(1 + \frac{\partial \dot q}{\partial q}\delta t\right)\!\left(1 + \frac{\partial \dot p}{\partial p}\delta t\right)
+- \left(\frac{\partial \dot q}{\partial p}\delta t\right)\!\left(\frac{\partial \dot p}{\partial q}\delta t\right)
+= 1 + \left(\frac{\partial \dot q}{\partial q} + \frac{\partial \dot p}{\partial p}\right)\delta t + O(\delta t^2).
 $$
 
 The bracket is precisely the divergence of the flow $\nabla\cdot\vec v$, and Proof 1 already showed $\nabla\cdot\vec v = 0$, hence
 
 $$
-\boxed{\ \det J = 1 + (\nabla\cdot\vec v)\,dt + O(dt^2) = 1\ }
+\boxed{\ \det J = 1 + (\nabla\cdot\vec v)\,\delta t + O(\delta t^2) = 1\ }
 \quad\Longrightarrow\quad
 dQ\,dP = dq\,dp .
 \qquad\blacksquare
 $$
 
-For finite times, simply compose the infinitesimal steps; the determinant stays identically 1. This is the same fact as the area change $\Delta S=(\nabla\cdot\vec v)\,\delta q\,\delta p\,dt$ computed in Proof 2 (geometric area method), by a different route, and ties volume invariance back to Proof 1: **"divergence-free" and "unit Jacobian" are the same fact, at first order.**
+For finite times, simply compose the infinitesimal steps; the determinant stays identically 1. This is the same fact as the area change $\Delta S=(\nabla\cdot\vec v)\,\delta q\,\delta p\,\delta t$ computed in Proof 2 (geometric area method), by a different route, and ties volume invariance back to Proof 1: **"divergence-free" and "unit Jacobian" are the same fact, at first order.**
 
 ---
 
@@ -404,9 +404,9 @@ where the classical Poisson bracket $\{\cdot,\cdot\}$ corresponds to the quantum
 
 - **Foundation of statistical mechanics:** Liouville's Theorem is the dynamical basis for the "equal a priori probability" postulate of the **microcanonical ensemble**: a density $\rho = \text{const}$ that is uniform on the energy shell is a stationary solution of the Liouville equation ($\partial\rho/\partial t = 0$), and hence a natural equilibrium distribution.
 
-- **Unifying the proofs:** the core of Proof 1, $\nabla\cdot\vec v = 0$, the area change of Proof 2, $\Delta S=(\nabla\cdot\vec v)\,\delta q\,\delta p\,dt$, and Proof 3's $\det J = 1+(\nabla\cdot\vec v)\,dt$ are **the same fact** (Proof 4 gives $\{Q,P\}=1$ from the symplectic structure of canonical transformations) — because the Jacobian expanded to first order is exactly
+- **Unifying the proofs:** the core of Proof 1, $\nabla\cdot\vec v = 0$, the area change of Proof 2, $\Delta S=(\nabla\cdot\vec v)\,\delta q\,\delta p\,\delta t$, and Proof 3's $\det J = 1+(\nabla\cdot\vec v)\,\delta t$ are **the same fact** (Proof 4 gives $\{Q,P\}=1$ from the symplectic structure of canonical transformations) — because the Jacobian expanded to first order is exactly
 $$
-\det J = 1 + (\nabla\cdot\vec v)\,dt + O(dt^2),
+\det J = 1 + (\nabla\cdot\vec v)\,\delta t + O(\delta t^2),
 $$
 so divergence-free $\iff$ zero first-order rate of volume change $\iff$ volume conserved. The former is the differential (local, instantaneous) view, the latter the integral (global, finite-step) view; they are two sides of one coin.
 

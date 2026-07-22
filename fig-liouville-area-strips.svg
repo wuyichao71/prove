@@ -20,7 +20,7 @@
 
   <!-- original rectangle (before) -->
   <path d="M230,350 L430,350 L430,190 L230,190 Z" fill="none" stroke="#555" stroke-width="1.6" stroke-dasharray="6 5"/>
-  <!-- image under the flow (after dt) -->
+  <!-- image under the flow (after δt) -->
   <path d="M276,310 L482,316 L476,156 L270,148 Z" fill="none" stroke="#1f2330" stroke-width="2"/>
 
   <!-- displacement arrows for ALL four corners -->
@@ -79,13 +79,13 @@
     <line x1="44" y1="408" x2="74" y2="408" stroke="#555" stroke-width="1.6" stroke-dasharray="6 5"/>
     <text x="80" y="412">dashed: before</text>
     <line x1="210" y1="408" x2="240" y2="408" stroke="#1f2330" stroke-width="2"/>
-    <text x="246" y="412" fill="#1f2330">solid: after (+dt)</text>
+    <text x="246" y="412" fill="#1f2330">solid: after (+δt)</text>
     <text x="400" y="412" fill="#b0701c">arrows: corner motion</text>
   </g>
   <g font-size="12.5" fill="#1f2330">
-    <text x="44" y="435">A (q, p)  →  A′ (q + q̇dt,  p + ṗdt)</text>
-    <text x="44" y="454">B (q+δq, p)  →  B′ (q+δq + q̇dt,  p + ṗdt)</text>
-    <text x="44" y="473">C (q, p+δp)  →  C′ (q + q̇dt,  p+δp + ṗdt)</text>
-    <text x="44" y="492">D (q+δq, p+δp)  →  D′ (q+δq + q̇dt,  p+δp + ṗdt)</text>
+    <text x="44" y="435">A (q, p)  →  A′ (q + q̇δt,  p + ṗδt)</text>
+    <text x="44" y="454">B (q+δq, p)  →  B′ (q+δq + q̇δt,  p + ṗδt)</text>
+    <text x="44" y="473">C (q, p+δp)  →  C′ (q + q̇δt,  p+δp + ṗδt)</text>
+    <text x="44" y="492">D (q+δq, p+δp)  →  D′ (q+δq + q̇δt,  p+δp + ṗδt)</text>
   </g>
 </svg>
