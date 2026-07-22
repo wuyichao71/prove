@@ -48,7 +48,7 @@ $$
 dQ\,dP = dq\,dp.
 $$
 
-**证明一**（连续性方程法）证明第一种表述；**证明二**（几何面积法）与**证明四**（正则变换法）从不同角度证明第二种表述（**证明三**待补）。
+**证明一**（连续性方程法）证明第一种表述；**证明二**（几何面积法）、**证明三**（时间演化的雅可比法）与**证明四**（正则变换法）从不同角度证明第二种表述。
 
 ---
 
@@ -222,21 +222,59 @@ $$
 
 即演化后面积仍为 $\delta q\,\delta p$。对有限时间，把无穷小步逐次相乘，面积恒保持不变。 $\blacksquare$
 
-这与**证明四**（正则变换／雅可比）是同一结论的两种视角：那里算 $\det J=1+(\nabla\cdot\vec v)\,dt$，这里算 $\Delta S=(\nabla\cdot\vec v)\,\delta q\,\delta p\,dt$——本质都是 $\nabla\cdot\vec v=0$。
+这与**证明三**（时间演化的雅可比法）是同一结论的两种算法：那里算 $\det J=1+(\nabla\cdot\vec v)\,dt$，这里算 $\Delta S=(\nabla\cdot\vec v)\,\delta q\,\delta p\,dt$——本质都是 $\nabla\cdot\vec v=0$。
 
 ---
 
-## 6. 证明三（待补）
+## 6. 证明三：时间演化下相空间体积不变（雅可比行列式法）
 
-> 此处留待你补充下一个证明。
+> 把时间演化本身看作相空间上的一个映射，直接计算它的雅可比行列式，展开到一阶即得体积不变。这是证明四（正则变换）的无穷小特例，但此处独立地直接验证，只用到哈密顿方程与证明一的 $\nabla\cdot\vec v=0$。
+
+经过无穷小时间 $dt$，相点按哈密顿方程移动，构成映射 $(q,p)\to(Q,P)$：
+
+$$
+(q,\ p)\ \longrightarrow\ (Q,\ P)
+= \left(\,q + \frac{\partial H}{\partial p}\,dt,\ \ p - \frac{\partial H}{\partial q}\,dt\,\right)
+= (q + \dot q\,dt,\ \ p + \dot p\,dt).
+$$
+
+计算此映射的雅可比矩阵，各元展开到 $O(dt)$：
+
+$$
+\frac{\partial Q}{\partial q} = 1 + \frac{\partial \dot q}{\partial q}\,dt,
+\quad
+\frac{\partial Q}{\partial p} = \frac{\partial \dot q}{\partial p}\,dt,
+\quad
+\frac{\partial P}{\partial q} = \frac{\partial \dot p}{\partial q}\,dt,
+\quad
+\frac{\partial P}{\partial p} = 1 + \frac{\partial \dot p}{\partial p}\,dt,
+$$
+
+于是
+
+$$
+\det J
+= \left(1 + \frac{\partial \dot q}{\partial q}dt\right)\!\left(1 + \frac{\partial \dot p}{\partial p}dt\right)
+- \left(\frac{\partial \dot q}{\partial p}dt\right)\!\left(\frac{\partial \dot p}{\partial q}dt\right)
+= 1 + \left(\frac{\partial \dot q}{\partial q} + \frac{\partial \dot p}{\partial p}\right)dt + O(dt^2).
+$$
+
+括号里正是相流的散度 $\nabla\cdot\vec v$，而证明一已证 $\nabla\cdot\vec v = 0$，故
+
+$$
+\boxed{\ \det J = 1 + (\nabla\cdot\vec v)\,dt + O(dt^2) = 1\ }
+\quad\Longrightarrow\quad
+dQ\,dP = dq\,dp .
+\qquad\blacksquare
+$$
+
+对有限时间，只需把无穷小步连乘，行列式仍恒为 1。它与证明二（几何面积法）算的 $\Delta S=(\nabla\cdot\vec v)\,\delta q\,\delta p\,dt$ 是同一件事的两种算法，也把体积不变接回了证明一：**"散度为零"与"雅可比为一"是同一件事的一阶体现**。
 
 ---
 
 ## 7. 证明四：正则变换下的体积不变性
 
-> 对应笔记第 2、3 张图。**先证明一般正则变换保持相空间体积**，再把时间演化作为无穷小正则变换的特例联系回来。
-
-### 7.1 正则变换保持相空间体积
+> 对应笔记第 2、3 张图。证明**任意正则变换都保持相空间体积元**；时间演化只是它的无穷小特例，已在证明三中直接验证。
 
 考虑一个变换 $(q,p)\to(Q,P)$。所谓**正则变换**，是指在新变量下运动方程仍保持哈密顿形式：
 
@@ -329,48 +367,6 @@ $$
 > 用矩阵语言，正则变换的雅可比矩阵 $J$ 满足**辛条件** $J^{\mathsf T}\Omega J = \Omega$，其中
 > $\Omega = \begin{pmatrix}0&1\\-1&0\end{pmatrix}$ 是辛形式。两边取行列式即得 $(\det J)^2 = 1$，与上面结论一致。
 
-### 7.2 时间演化是无穷小正则变换
-
-时间演化本身就是一族单参数正则变换：经过无穷小时间 $dt$，相点按哈密顿方程移动
-
-$$
-(q,\ p)\ \longrightarrow\ (Q,\ P)
-= \left(\,q + \frac{\partial H}{\partial p}\,dt,\ \ p - \frac{\partial H}{\partial q}\,dt\,\right)
-= (q + \dot q\,dt,\ \ p + \dot p\,dt).
-$$
-
-由 7.1 节的一般结论，它必然保持体积。也可以直接验证——计算此映射的雅可比并展开到 $O(dt)$：
-
-$$
-\frac{\partial Q}{\partial q} = 1 + \frac{\partial \dot q}{\partial q}\,dt,
-\quad
-\frac{\partial Q}{\partial p} = \frac{\partial \dot q}{\partial p}\,dt,
-\quad
-\frac{\partial P}{\partial q} = \frac{\partial \dot p}{\partial q}\,dt,
-\quad
-\frac{\partial P}{\partial p} = 1 + \frac{\partial \dot p}{\partial p}\,dt,
-$$
-
-于是
-
-$$
-\det J
-= \left(1 + \frac{\partial \dot q}{\partial q}dt\right)\!\left(1 + \frac{\partial \dot p}{\partial p}dt\right)
-- \left(\frac{\partial \dot q}{\partial p}dt\right)\!\left(\frac{\partial \dot p}{\partial q}dt\right)
-= 1 + \left(\frac{\partial \dot q}{\partial q} + \frac{\partial \dot p}{\partial p}\right)dt + O(dt^2).
-$$
-
-括号里正是相流的散度 $\nabla\cdot\vec v$，而证明一已证 $\nabla\cdot\vec v = 0$，故
-
-$$
-\boxed{\ \det J = 1 + (\nabla\cdot\vec v)\,dt + O(dt^2) = 1\ }
-\quad\Longrightarrow\quad
-dQ\,dP = dq\,dp .
-\qquad\blacksquare
-$$
-
-对有限时间，只需把无穷小步连乘，行列式仍恒为 1。这既与 7.1 节的正则变换结论一致，也把证明四接回了证明一：**"散度为零"与"雅可比为一"是同一件事的一阶体现**。
-
 ---
 
 ## 8. 泊松括号形式
@@ -409,7 +405,7 @@ $$
 
 - **统计力学基础：** 刘维尔定理是**微正则系综**中"等概率假设"的动力学依据：在能量壳层上均匀的密度分布 $\rho = \text{const}$ 是刘维尔方程的定态解（$\partial\rho/\partial t = 0$），因而是自然的平衡态分布。
 
-- **各证明的统一：** 证明一的核心 $\nabla\cdot\vec v = 0$、证明二的面积改变量 $\Delta S=(\nabla\cdot\vec v)\,\delta q\,\delta p\,dt$ 与证明四的 $\det J = 1$ **本质是同一件事**——因为雅可比行列式展开到一阶恰为
+- **各证明的统一：** 证明一的核心 $\nabla\cdot\vec v = 0$、证明二的面积改变量 $\Delta S=(\nabla\cdot\vec v)\,\delta q\,\delta p\,dt$ 与证明三的 $\det J = 1+(\nabla\cdot\vec v)\,dt$ **本质是同一件事**（证明四则从正则变换的辛结构给出 $\{Q,P\}=1$）——因为雅可比行列式展开到一阶恰为
 $$
 \det J = 1 + (\nabla\cdot\vec v)\,dt + O(dt^2),
 $$

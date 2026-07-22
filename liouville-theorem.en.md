@@ -48,7 +48,7 @@ $$
 dQ\,dP = dq\,dp.
 $$
 
-**Proof 1** (continuity equation) establishes the first; **Proof 2** (geometric area method) and **Proof 4** (canonical transformations) establish the second from different angles (**Proof 3** to be added).
+**Proof 1** (continuity equation) establishes the first; **Proof 2** (geometric area method), **Proof 3** (time-evolution Jacobian method) and **Proof 4** (canonical transformations) establish the second from different angles.
 
 ---
 
@@ -222,21 +222,59 @@ $$
 
 so the evolved area is still $\delta q\,\delta p$. For finite times, compose the infinitesimal steps and the area is preserved throughout. $\blacksquare$
 
-This is the same conclusion as **Proof 4** (canonical transformations / Jacobian) seen from another angle: there one computes $\det J=1+(\nabla\cdot\vec v)\,dt$, here $\Delta S=(\nabla\cdot\vec v)\,\delta q\,\delta p\,dt$ — both reduce to $\nabla\cdot\vec v=0$.
+This is the same conclusion as **Proof 3** (time-evolution Jacobian method) by a different route: there one computes $\det J=1+(\nabla\cdot\vec v)\,dt$, here $\Delta S=(\nabla\cdot\vec v)\,\delta q\,\delta p\,dt$ — both reduce to $\nabla\cdot\vec v=0$.
 
 ---
 
-## 6. Proof 3 (to be added)
+## 6. Proof 3 — Volume Invariance under Time Evolution (Jacobian-determinant method)
 
-> Reserved for your next proof.
+> Treat time evolution itself as a map on phase space and compute its Jacobian determinant directly; expanded to first order it equals 1. This is the infinitesimal special case of Proof 4 (canonical transformations), verified here independently using only Hamilton's equations and $\nabla\cdot\vec v=0$ from Proof 1.
+
+After an infinitesimal time $dt$, a phase point moves according to Hamilton's equations, giving the map $(q,p)\to(Q,P)$:
+
+$$
+(q,\ p)\ \longrightarrow\ (Q,\ P)
+= \left(\,q + \frac{\partial H}{\partial p}\,dt,\ \ p - \frac{\partial H}{\partial q}\,dt\,\right)
+= (q + \dot q\,dt,\ \ p + \dot p\,dt).
+$$
+
+Compute the Jacobian matrix of this map, each entry expanded to $O(dt)$:
+
+$$
+\frac{\partial Q}{\partial q} = 1 + \frac{\partial \dot q}{\partial q}\,dt,
+\quad
+\frac{\partial Q}{\partial p} = \frac{\partial \dot q}{\partial p}\,dt,
+\quad
+\frac{\partial P}{\partial q} = \frac{\partial \dot p}{\partial q}\,dt,
+\quad
+\frac{\partial P}{\partial p} = 1 + \frac{\partial \dot p}{\partial p}\,dt,
+$$
+
+so that
+
+$$
+\det J
+= \left(1 + \frac{\partial \dot q}{\partial q}dt\right)\!\left(1 + \frac{\partial \dot p}{\partial p}dt\right)
+- \left(\frac{\partial \dot q}{\partial p}dt\right)\!\left(\frac{\partial \dot p}{\partial q}dt\right)
+= 1 + \left(\frac{\partial \dot q}{\partial q} + \frac{\partial \dot p}{\partial p}\right)dt + O(dt^2).
+$$
+
+The bracket is precisely the divergence of the flow $\nabla\cdot\vec v$, and Proof 1 already showed $\nabla\cdot\vec v = 0$, hence
+
+$$
+\boxed{\ \det J = 1 + (\nabla\cdot\vec v)\,dt + O(dt^2) = 1\ }
+\quad\Longrightarrow\quad
+dQ\,dP = dq\,dp .
+\qquad\blacksquare
+$$
+
+For finite times, simply compose the infinitesimal steps; the determinant stays identically 1. This is the same fact as the area change $\Delta S=(\nabla\cdot\vec v)\,\delta q\,\delta p\,dt$ computed in Proof 2 (geometric area method), by a different route, and ties volume invariance back to Proof 1: **"divergence-free" and "unit Jacobian" are the same fact, at first order.**
 
 ---
 
 ## 7. Proof 4 — Volume Invariance under Canonical Transformations
 
-> Corresponds to the second and third pages of notes. **First prove that a general canonical transformation preserves phase-space volume**, then connect back by treating time evolution as an infinitesimal canonical transformation.
-
-### 7.1 A canonical transformation preserves phase-space volume
+> Corresponds to the second and third pages of notes. Prove that **any canonical transformation preserves the phase-space volume element**; time evolution is merely its infinitesimal special case, verified directly in Proof 3.
 
 Consider a transformation $(q,p)\to(Q,P)$. A **canonical transformation** is one that keeps the equations of motion in Hamiltonian form in the new variables:
 
@@ -328,48 +366,6 @@ $$
 
 > In matrix language, the Jacobian matrix $J$ of a canonical transformation satisfies the **symplectic condition** $J^{\mathsf T}\Omega J = \Omega$, where $\Omega = \begin{pmatrix}0&1\\-1&0\end{pmatrix}$ is the symplectic form. Taking determinants of both sides gives $(\det J)^2 = 1$, consistent with the result above.
 
-### 7.2 Time evolution is an infinitesimal canonical transformation
-
-Time evolution is itself a one-parameter family of canonical transformations: after an infinitesimal time $dt$, a phase point moves according to Hamilton's equations,
-
-$$
-(q,\ p)\ \longrightarrow\ (Q,\ P)
-= \left(\,q + \frac{\partial H}{\partial p}\,dt,\ \ p - \frac{\partial H}{\partial q}\,dt\,\right)
-= (q + \dot q\,dt,\ \ p + \dot p\,dt).
-$$
-
-By the general result of §7.1 it must preserve volume. One can also verify this directly — compute the Jacobian of this map and expand to $O(dt)$:
-
-$$
-\frac{\partial Q}{\partial q} = 1 + \frac{\partial \dot q}{\partial q}\,dt,
-\quad
-\frac{\partial Q}{\partial p} = \frac{\partial \dot q}{\partial p}\,dt,
-\quad
-\frac{\partial P}{\partial q} = \frac{\partial \dot p}{\partial q}\,dt,
-\quad
-\frac{\partial P}{\partial p} = 1 + \frac{\partial \dot p}{\partial p}\,dt,
-$$
-
-so that
-
-$$
-\det J
-= \left(1 + \frac{\partial \dot q}{\partial q}dt\right)\!\left(1 + \frac{\partial \dot p}{\partial p}dt\right)
-- \left(\frac{\partial \dot q}{\partial p}dt\right)\!\left(\frac{\partial \dot p}{\partial q}dt\right)
-= 1 + \left(\frac{\partial \dot q}{\partial q} + \frac{\partial \dot p}{\partial p}\right)dt + O(dt^2).
-$$
-
-The bracket is precisely the divergence of the flow $\nabla\cdot\vec v$, and Proof 1 already showed $\nabla\cdot\vec v = 0$, hence
-
-$$
-\boxed{\ \det J = 1 + (\nabla\cdot\vec v)\,dt + O(dt^2) = 1\ }
-\quad\Longrightarrow\quad
-dQ\,dP = dq\,dp .
-\qquad\blacksquare
-$$
-
-For finite times, simply compose the infinitesimal steps; the determinant stays identically 1. This agrees with the canonical-transformation result of §7.1 and ties Proof 4 back to Proof 1: **"divergence-free" and "unit Jacobian" are the same fact, at first order.**
-
 ---
 
 ## 8. Poisson-Bracket Form
@@ -408,7 +404,7 @@ where the classical Poisson bracket $\{\cdot,\cdot\}$ corresponds to the quantum
 
 - **Foundation of statistical mechanics:** Liouville's Theorem is the dynamical basis for the "equal a priori probability" postulate of the **microcanonical ensemble**: a density $\rho = \text{const}$ that is uniform on the energy shell is a stationary solution of the Liouville equation ($\partial\rho/\partial t = 0$), and hence a natural equilibrium distribution.
 
-- **Unifying the proofs:** the core of Proof 1, $\nabla\cdot\vec v = 0$, the area change of Proof 2, $\Delta S=(\nabla\cdot\vec v)\,\delta q\,\delta p\,dt$, and Proof 4's $\det J = 1$ are **the same fact** — because the Jacobian expanded to first order is exactly
+- **Unifying the proofs:** the core of Proof 1, $\nabla\cdot\vec v = 0$, the area change of Proof 2, $\Delta S=(\nabla\cdot\vec v)\,\delta q\,\delta p\,dt$, and Proof 3's $\det J = 1+(\nabla\cdot\vec v)\,dt$ are **the same fact** (Proof 4 gives $\{Q,P\}=1$ from the symplectic structure of canonical transformations) — because the Jacobian expanded to first order is exactly
 $$
 \det J = 1 + (\nabla\cdot\vec v)\,dt + O(dt^2),
 $$
