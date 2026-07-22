@@ -24,7 +24,7 @@ $$
 \dot q = \frac{\partial H}{\partial p}, \qquad \dot p = -\frac{\partial H}{\partial q}.
 $$
 
-定义相空间中的**"速度场"**：
+定义相空间中的"**速度场**"：
 
 $$
 \vec v \equiv (\dot q,\ \dot p) = \left(\frac{\partial H}{\partial p},\ -\frac{\partial H}{\partial q}\right).
@@ -77,9 +77,18 @@ $$
 \tag{4.1}
 $$
 
-### 4.2 改写为连续性方程
+### 4.2 连续性方程（物理前提）
 
-先考察带密度的通量散度 $\nabla\cdot(\rho\vec v)$。逐项用乘积法则展开：
+系综中系统的总数守恒——代表点既不产生也不消灭。对相空间中任一固定区域，其内部系统数的减少率等于经边界流出的净通量；用散度定理化为微分形式，便得到相空间中的**连续性方程**：
+
+$$
+\boxed{\ \frac{\partial \rho}{\partial t} + \nabla\cdot(\rho\vec v) = 0\ }
+\tag{4.2}
+$$
+
+它与流体力学中的质量守恒方程形式完全一致，是本证明的**物理出发点**——来自"系统数守恒"这一物理事实，而非由代数推导得来。
+
+为便于后面代入，把带密度的通量散度用乘积法则展开成一个恒等式：
 
 $$
 \nabla\cdot(\rho\vec v)
@@ -88,15 +97,6 @@ $$
 = \underbrace{\left(\frac{\partial \rho}{\partial q}\dot q + \frac{\partial \rho}{\partial p}\dot p\right)}_{(\vec v\cdot\nabla)\rho}
 + \rho\underbrace{\left(\frac{\partial \dot q}{\partial q} + \frac{\partial \dot p}{\partial p}\right)}_{\nabla\cdot\vec v}.
 $$
-
-因此相空间中的**连续性方程**成立：
-
-$$
-\boxed{\ \frac{\partial \rho}{\partial t} + \nabla\cdot(\rho\vec v) = 0\ }
-\tag{4.2}
-$$
-
-这与流体力学中的质量守恒方程形式完全一致——它只是"相空间中系统总数守恒"的微分表述。
 
 ### 4.3 关键引理：相流无散度
 

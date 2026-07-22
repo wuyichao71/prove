@@ -77,9 +77,18 @@ $$
 \tag{4.1}
 $$
 
-### 4.2 Rewrite as a continuity equation
+### 4.2 The continuity equation (physical premise)
 
-Consider the divergence of the density flux $\nabla\cdot(\rho\vec v)$. Expanding term by term with the product rule:
+The total number of systems in the ensemble is conserved — representative points are neither created nor destroyed. For any fixed region of phase space, the rate of decrease of the enclosed systems equals the net outward flux through its boundary; recast in differential form via the divergence theorem, this gives the **continuity equation** in phase space:
+
+$$
+\boxed{\ \frac{\partial \rho}{\partial t} + \nabla\cdot(\rho\vec v) = 0\ }
+\tag{4.2}
+$$
+
+This has exactly the form of the mass-conservation equation in fluid mechanics; it is the **physical starting point** of the proof — supplied by the fact that the number of systems is conserved, not obtained by algebra.
+
+To prepare for substitution, expand the density-flux divergence into an identity with the product rule:
 
 $$
 \nabla\cdot(\rho\vec v)
@@ -88,15 +97,6 @@ $$
 = \underbrace{\left(\frac{\partial \rho}{\partial q}\dot q + \frac{\partial \rho}{\partial p}\dot p\right)}_{(\vec v\cdot\nabla)\rho}
 + \rho\underbrace{\left(\frac{\partial \dot q}{\partial q} + \frac{\partial \dot p}{\partial p}\right)}_{\nabla\cdot\vec v}.
 $$
-
-Hence the **continuity equation** holds in phase space:
-
-$$
-\boxed{\ \frac{\partial \rho}{\partial t} + \nabla\cdot(\rho\vec v) = 0\ }
-\tag{4.2}
-$$
-
-This has exactly the form of the mass-conservation equation in fluid mechanics — it is simply the differential statement that the total number of systems in phase space is conserved.
 
 ### 4.3 Key lemma: the flow is divergence-free
 
