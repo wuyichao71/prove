@@ -85,7 +85,7 @@ $$
 \nabla\cdot(\rho\vec v)
 = \frac{\partial}{\partial q}\big(\rho\,\dot q\big)
 + \frac{\partial}{\partial p}\big(\rho\,\dot p\big)
-= \underbrace{\left(\frac{\partial \rho}{\partial q}\dot q + \frac{\partial \rho}{\partial p}\dot p\right)}_{\text{密度梯度项}}
+= \underbrace{\left(\frac{\partial \rho}{\partial q}\dot q + \frac{\partial \rho}{\partial p}\dot p\right)}_{(\vec v\cdot\nabla)\rho}
 + \rho\underbrace{\left(\frac{\partial \dot q}{\partial q} + \frac{\partial \dot p}{\partial p}\right)}_{\nabla\cdot\vec v}.
 $$
 
