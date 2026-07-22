@@ -1,0 +1,104 @@
+# 有偏系综与无偏系综之间的重加权
+
+> 手写笔记的整理稿。本文推导重要性采样的**权重**，用它把从*有偏*玻尔兹曼分布
+> 中采得的样本，重新换算为*无偏*目标分布下的期望值。
+
+---
+
+## 1. 设定
+
+考察构型 $\vec x$（构型空间中的一点），比较两个玻尔兹曼型概率密度。
+
+- **目标（无偏）分布。** 记约化势能为 $u_0(\vec x)$，
+$$
+p(\vec x) = \frac{1}{c}\,\exp\!\big(-u_0(\vec x)\big),
+\qquad
+c = \int \exp\!\big(-u_0(\vec x)\big)\,d\vec x .
+$$
+其中 $c$ 是配分函数，使 $p$ 的积分归一。
+
+- **有偏分布。** 在 $u_0$ 上叠加一个偏置势 $b(\vec x)$，
+$$
+p_b(\vec x) = \frac{1}{c_b}\,\exp\!\big(-u_0(\vec x) - b(\vec x)\big),
+\qquad
+c_b = \int \exp\!\big(-u_0(\vec x) - b(\vec x)\big)\,d\vec x .
+$$
+采样（例如增强采样或伞形采样模拟）在 $p_b$ 下进行，而我们想要的是 $p$ 下的
+平均值。
+
+以上两式对应笔记的前两行。
+
+---
+
+## 2. 重加权因子
+
+要用有偏样本还原无偏平均，需要两个密度的逐点比值，即**重要性权重**：
+
+$$
+w(\vec x) \;=\; \frac{p(\vec x)}{p_b(\vec x)}
+\;=\;
+\frac{\dfrac{1}{c}\,\exp\!\big(-u_0(\vec x)\big)}
+     {\dfrac{1}{c_b}\,\exp\!\big(-u_0(\vec x) - b(\vec x)\big)} .
+$$
+
+指数因子通过其宗量相减合并，
+$$
+-u_0(\vec x) \;-\; \big(-u_0(\vec x) - b(\vec x)\big) \;=\; b(\vec x),
+$$
+公共的 $-u_0(\vec x)$ 相消，指数上只剩下偏置项：
+
+$$
+w(\vec x)
+\;=\;
+\frac{1}{c}\cdot\frac{\exp\!\big(b(\vec x)\big)}{\,1/c_b\,}
+\;=\;
+\boxed{\,\frac{c_b}{c}\,\exp\!\big(b(\vec x)\big)\, }.
+$$
+
+这对应笔记的中间部分。权重由一个常数前因子 $c_b/c$（两个配分函数之比）与依赖
+构型的因子 $\exp\!\big(b(\vec x)\big)$ 相乘而成，后者恰好抵消了先前施加的偏置。
+
+---
+
+## 3. 归一化权重
+
+实际计算中前因子 $c_b/c$ 未知，因为配分函数并不直接算出。真正用到的是**自归一化
+权重** $W(\vec x)$——把同一个比值中的有偏密度 $p_b$（即 $c_b^{-1}\exp(-u_0 - b)$）
+展开写在分母上，也就是笔记中标注 “mbar” 的写法：
+
+$$
+W(\vec x)
+\;=\;
+\frac{1}{c}\,
+\frac{\exp\!\big(-u_0(\vec x)\big)}
+     {\,c_b^{-1}\exp\!\big(-u_0(\vec x) - b(\vec x)\big)\,}
+\;=\;
+\frac{c_b}{c}\,\exp\!\big(b(\vec x)\big).
+$$
+
+由于分母恰为 $p_b(\vec x)$，结果与第 2 节相同：
+$W(\vec x) = w(\vec x) = \dfrac{c_b}{c}\exp\!\big(b(\vec x)\big)$。这对应笔记的最后一行。
+
+只要在样本集 $\{\vec x_i\}$ 上对权重做归一化，未知常数 $c_b/c$ 就自动消去：
+$$
+\widehat{W}(\vec x_i) = \frac{w(\vec x_i)}{\sum_j w(\vec x_j)}
+= \frac{\exp\!\big(b(\vec x_i)\big)}{\sum_j \exp\!\big(b(\vec x_j)\big)} .
+$$
+于是任意观测量 $A$ 的无偏系综平均都可仅用偏置值来估计：
+$$
+\langle A\rangle_p \;\approx\; \sum_i \widehat{W}(\vec x_i)\,A(\vec x_i)
+\;=\; \frac{\sum_i A(\vec x_i)\,e^{\,b(\vec x_i)}}{\sum_i e^{\,b(\vec x_i)}}.
+$$
+
+---
+
+## 4. 说明
+
+整个推导只依赖一次相消：因为 $p$ 与 $p_b$ 共享同一个底层势能 $u_0$，它们的比值
+不再依赖 $u_0$——只剩偏置 $b(\vec x)$ 和配分函数比这个常数。这正是从有偏模拟做
+重加权在原理上精确的原因：把每个有偏样本乘以 $e^{\,b(\vec x)}$（至多相差一个整体
+归一化因子），无偏统计量便得以还原。
+
+---
+
+*英文版本：[`reweighting-weights.en.md`](./reweighting-weights.en.md)*
