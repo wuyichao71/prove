@@ -1,60 +1,91 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 470" width="560" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" role="img" aria-label="Infinitesimal phase-space area element and its four boundary strips S1 S2 S3 S4">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 500" width="560" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" role="img" aria-label="An infinitesimal phase-space rectangle ABDC and its image A'B'D'C' under the Hamiltonian flow, with the four boundary strips S1 S2 S3 S4 and the corner mapping">
   <defs>
-    <marker id="ah" markerWidth="9" markerHeight="9" refX="7" refY="3.2" orient="auto">
-      <path d="M0,0 L7,3.2 L0,6.4 z" fill="#1f2330"/>
+    <marker id="av" markerWidth="10" markerHeight="10" refX="7.5" refY="3.4" orient="auto">
+      <path d="M0,0 L7.5,3.4 L0,6.8 z" fill="#b0701c"/>
     </marker>
-    <marker id="ai" markerWidth="9" markerHeight="9" refX="7" refY="3.2" orient="auto">
-      <path d="M0,0 L7,3.2 L0,6.4 z" fill="#43509e"/>
+    <marker id="ax" markerWidth="9" markerHeight="9" refX="7" refY="3.2" orient="auto">
+      <path d="M0,0 L7,3.2 L0,6.4 z" fill="#888"/>
     </marker>
   </defs>
 
-  <rect x="1" y="1" width="638" height="468" rx="14" fill="#fcfcfe" stroke="#e6e7ee"/>
+  <rect x="1" y="1" width="598" height="498" rx="14" fill="#fcfcfe" stroke="#e6e7ee"/>
 
-  <!-- boundary strips (drawn under the rectangle outline) -->
-  <!-- S1 left, S2 right : horizontal sweep (from q-dot) -->
-  <rect x="176" y="150" width="34" height="170" fill="#43509e" fill-opacity="0.15" stroke="#43509e" stroke-opacity="0.55"/>
-  <rect x="430" y="150" width="34" height="170" fill="#43509e" fill-opacity="0.28" stroke="#43509e" stroke-opacity="0.6"/>
-  <!-- S3 bottom, S4 top : vertical sweep (from p-dot) -->
-  <rect x="210" y="320" width="220" height="32" fill="#b0701c" fill-opacity="0.16" stroke="#b0701c" stroke-opacity="0.55"/>
-  <rect x="210" y="118" width="220" height="32" fill="#b0701c" fill-opacity="0.30" stroke="#b0701c" stroke-opacity="0.6"/>
+  <!-- boundary strips: frame swept between the original rectangle and its image -->
+  <g stroke-width="1">
+    <polygon points="230,350 230,190 270,148 276,310" fill="#43509e" fill-opacity="0.10" stroke="#43509e" stroke-opacity="0.4"/>
+    <polygon points="230,350 430,350 482,316 276,310" fill="#43509e" fill-opacity="0.10" stroke="#43509e" stroke-opacity="0.4"/>
+    <polygon points="430,350 430,190 476,156 482,316" fill="#43509e" fill-opacity="0.20" stroke="#43509e" stroke-opacity="0.5"/>
+    <polygon points="230,190 430,190 476,156 270,148" fill="#43509e" fill-opacity="0.20" stroke="#43509e" stroke-opacity="0.5"/>
+  </g>
 
-  <!-- the area element (delta q x delta p) -->
-  <rect x="210" y="150" width="220" height="170" fill="none" stroke="#1f2330" stroke-width="2"/>
+  <!-- original rectangle (before) -->
+  <path d="M230,350 L430,350 L430,190 L230,190 Z" fill="none" stroke="#555" stroke-width="1.6" stroke-dasharray="6 5"/>
+  <!-- image under the flow (after dt) -->
+  <path d="M276,310 L482,316 L476,156 L270,148 Z" fill="none" stroke="#1f2330" stroke-width="2"/>
+
+  <!-- displacement arrows for ALL four corners -->
+  <g stroke="#b0701c" stroke-width="1.9">
+    <line x1="230" y1="350" x2="276" y2="310" marker-end="url(#av)"/>
+    <line x1="430" y1="350" x2="482" y2="316" marker-end="url(#av)"/>
+    <line x1="230" y1="190" x2="270" y2="148" marker-end="url(#av)"/>
+    <line x1="430" y1="190" x2="476" y2="156" marker-end="url(#av)"/>
+  </g>
+
+  <!-- corner dots -->
+  <g fill="#1f2330">
+    <circle cx="230" cy="350" r="3"/><circle cx="430" cy="350" r="3"/>
+    <circle cx="230" cy="190" r="3"/><circle cx="430" cy="190" r="3"/>
+  </g>
+  <g fill="#b0701c">
+    <circle cx="276" cy="310" r="3"/><circle cx="482" cy="316" r="3"/>
+    <circle cx="270" cy="148" r="3"/><circle cx="476" cy="156" r="3"/>
+  </g>
+
+  <!-- corner letters -->
+  <g font-size="13.5" font-weight="600" fill="#1f2330">
+    <text x="215" y="366">A</text>
+    <text x="437" y="367">B</text>
+    <text x="214" y="185">C</text>
+    <text x="437" y="185">D</text>
+  </g>
+  <g font-size="13.5" font-weight="600" fill="#a8641a">
+    <text x="286" y="303">A′</text>
+    <text x="489" y="320">B′</text>
+    <text x="252" y="141">C′</text>
+    <text x="483" y="150">D′</text>
+  </g>
 
   <!-- strip labels -->
-  <text x="193" y="241" font-size="18" font-weight="600" fill="#3a4790" text-anchor="middle">S₁</text>
-  <text x="447" y="241" font-size="18" font-weight="600" fill="#3a4790" text-anchor="middle">S₂</text>
-  <text x="320" y="343" font-size="18" font-weight="600" fill="#8a5312" text-anchor="middle">S₃</text>
-  <text x="320" y="141" font-size="18" font-weight="600" fill="#8a5312" text-anchor="middle">S₄</text>
-
-  <!-- displacement thickness cues -->
-  <line x1="430" y1="300" x2="464" y2="300" stroke="#43509e" stroke-width="1.6" marker-end="url(#ai)"/>
-  <text x="475" y="299" font-size="13" fill="#3a4790">q̇ dt</text>
-  <line x1="400" y1="150" x2="400" y2="118" stroke="#b0701c" stroke-width="1.6" marker-end="url(#ah)" stroke-opacity="0"/>
-  <line x1="398" y1="150" x2="398" y2="120" stroke="#8a5312" stroke-width="1.6" marker-end="url(#ah)"/>
-  <text x="405" y="112" font-size="13" fill="#8a5312">ṗ dt</text>
-
-  <!-- flow displacement vector at corner A -->
-  <line x1="210" y1="320" x2="252" y2="288" stroke="#1f2330" stroke-width="1.8" marker-end="url(#ah)"/>
-  <text x="258" y="286" font-size="13" fill="#1f2330">(q̇ dt, ṗ dt)</text>
-
-  <!-- corner coordinates -->
-  <circle cx="210" cy="320" r="3" fill="#1f2330"/>
-  <circle cx="430" cy="320" r="3" fill="#1f2330"/>
-  <circle cx="210" cy="150" r="3" fill="#1f2330"/>
-  <circle cx="430" cy="150" r="3" fill="#1f2330"/>
-  <text x="150" y="340" font-size="13" fill="#1f2330">(q, p)</text>
-  <text x="452" y="340" font-size="13" fill="#1f2330">(q+δq, p)</text>
-  <text x="150" y="146" font-size="13" fill="#1f2330">(q, p+δp)</text>
-  <text x="440" y="146" font-size="13" fill="#1f2330">(q+δq, p+δp)</text>
+  <g font-size="17" font-weight="600" fill="#3a4790" text-anchor="middle">
+    <text x="246" y="262">S₁</text>
+    <text x="455" y="258">S₂</text>
+    <text x="352" y="337">S₃</text>
+    <text x="351" y="174">S₄</text>
+  </g>
 
   <!-- edge lengths -->
-  <text x="320" y="312" font-size="13" fill="#555" text-anchor="middle">δq</text>
-  <text x="222" y="238" font-size="13" fill="#555">δp</text>
+  <text x="330" y="343" font-size="12.5" fill="#666" text-anchor="middle">δq</text>
+  <text x="238" y="274" font-size="12.5" fill="#666">δp</text>
 
-  <!-- little q,p axes -->
-  <line x1="56" y1="430" x2="112" y2="430" stroke="#777" stroke-width="1.4" marker-end="url(#ah)"/>
-  <line x1="56" y1="430" x2="56" y2="376" stroke="#777" stroke-width="1.4" marker-end="url(#ah)"/>
-  <text x="116" y="434" font-size="13" fill="#777">q</text>
-  <text x="48" y="372" font-size="13" fill="#777">p</text>
+  <!-- q,p axes -->
+  <line x1="46" y1="360" x2="86" y2="360" stroke="#888" stroke-width="1.3" marker-end="url(#ax)"/>
+  <line x1="46" y1="360" x2="46" y2="322" stroke="#888" stroke-width="1.3" marker-end="url(#ax)"/>
+  <text x="90" y="364" font-size="12.5" fill="#888">q</text>
+  <text x="39" y="318" font-size="12.5" fill="#888">p</text>
+
+  <!-- key: before -> after for every corner -->
+  <line x1="40" y1="392" x2="560" y2="392" stroke="#e6e7ee"/>
+  <g font-size="12" fill="#555">
+    <line x1="44" y1="408" x2="74" y2="408" stroke="#555" stroke-width="1.6" stroke-dasharray="6 5"/>
+    <text x="80" y="412">dashed: before</text>
+    <line x1="210" y1="408" x2="240" y2="408" stroke="#1f2330" stroke-width="2"/>
+    <text x="246" y="412" fill="#1f2330">solid: after (+dt)</text>
+    <text x="400" y="412" fill="#b0701c">arrows: corner motion</text>
+  </g>
+  <g font-size="12.5" fill="#1f2330">
+    <text x="44" y="435">A (q, p)  →  A′ (q + q̇dt,  p + ṗdt)</text>
+    <text x="44" y="454">B (q+δq, p)  →  B′ (q+δq + q̇dt,  p + ṗdt)</text>
+    <text x="44" y="473">C (q, p+δp)  →  C′ (q + q̇dt,  p+δp + ṗdt)</text>
+    <text x="44" y="492">D (q+δq, p+δp)  →  D′ (q+δq + q̇dt,  p+δp + ṗdt)</text>
+  </g>
 </svg>
