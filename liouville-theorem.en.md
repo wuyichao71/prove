@@ -56,34 +56,13 @@ $$
 
 > Corresponds to the first page of notes. Treat the ensemble as a fluid in phase space and argue with the language of fluid conservation (a continuity equation).
 
-### 4.1 Expand the total derivative
-
-The total time derivative of the density $\rho(t,q,p)$ along a trajectory is
-
-$$
-\frac{d\rho}{dt}
-= \frac{\partial \rho}{\partial t}
-+ \frac{\partial \rho}{\partial q}\,\dot q
-+ \frac{\partial \rho}{\partial p}\,\dot p .
-$$
-
-Substituting Hamilton's equations $\dot q = \partial H/\partial p$ and $\dot p = -\partial H/\partial q$:
-
-$$
-\frac{d\rho}{dt}
-= \frac{\partial \rho}{\partial t}
-+ \frac{\partial \rho}{\partial q}\frac{\partial H}{\partial p}
-- \frac{\partial \rho}{\partial p}\frac{\partial H}{\partial q}.
-\tag{4.1}
-$$
-
-### 4.2 The continuity equation (physical premise)
+### 4.1 The continuity equation (physical premise)
 
 The total number of systems in the ensemble is conserved — representative points are neither created nor destroyed. For any fixed region of phase space, the rate of decrease of the enclosed systems equals the net outward flux through its boundary; recast in differential form via the divergence theorem, this gives the **continuity equation** in phase space:
 
 $$
 \boxed{\ \frac{\partial \rho}{\partial t} + \nabla\cdot(\rho\vec v) = 0\ }
-\tag{4.2}
+\tag{4.1}
 $$
 
 This has exactly the form of the mass-conservation equation in fluid mechanics; it is the **physical starting point** of the proof — supplied by the fact that the number of systems is conserved, not obtained by algebra.
@@ -98,7 +77,7 @@ $$
 + \rho\underbrace{\left(\frac{\partial \dot q}{\partial q} + \frac{\partial \dot p}{\partial p}\right)}_{\nabla\cdot\vec v}.
 $$
 
-### 4.3 Key lemma: the flow is divergence-free
+### 4.2 Key lemma: the flow is divergence-free
 
 Compute the divergence of the phase-space velocity field, substituting Hamilton's equations:
 
@@ -114,14 +93,14 @@ As long as the second partials of $H$ are continuous, the mixed partials commute
 
 $$
 \boxed{\ \nabla\cdot\vec v = 0\ }
-\tag{4.3}
+\tag{4.2}
 $$
 
 **This is the heart of the whole proof:** the Hamiltonian flow is divergence-free; the phase-space "fluid" is incompressible.
 
-### 4.4 Conclusion
+### 4.3 Conclusion: substitute back, then expand the total derivative
 
-Substitute (4.3) back into the continuity equation (4.2). Since $\nabla\cdot(\rho\vec v) = (\vec v\cdot\nabla)\rho + \rho\,(\nabla\cdot\vec v)$ and the second term vanishes,
+Substitute the lemma (4.2) $\nabla\cdot\vec v = 0$ into the identity from §4.1; the second term vanishes, so $\nabla\cdot(\rho\vec v) = (\vec v\cdot\nabla)\rho$. Putting this back into the continuity equation (4.1):
 
 $$
 \frac{\partial \rho}{\partial t}
@@ -130,11 +109,20 @@ $$
 = -\frac{\partial \rho}{\partial q}\dot q - \frac{\partial \rho}{\partial p}\dot p .
 $$
 
-Rearranging gives
+Only now do we bring in the **total-derivative expansion**: the total time derivative of the density $\rho(t,q,p)$ along a trajectory is
 
 $$
 \frac{d\rho}{dt}
 = \frac{\partial \rho}{\partial t}
++ \frac{\partial \rho}{\partial q}\dot q
++ \frac{\partial \rho}{\partial p}\dot p .
+$$
+
+Substituting the $\partial\rho/\partial t$ just obtained, the two groups of terms cancel exactly:
+
+$$
+\frac{d\rho}{dt}
+= \left(-\frac{\partial \rho}{\partial q}\dot q - \frac{\partial \rho}{\partial p}\dot p\right)
 + \frac{\partial \rho}{\partial q}\dot q
 + \frac{\partial \rho}{\partial p}\dot p
 = 0 .
@@ -293,7 +281,7 @@ $$
 \{A, B\} \equiv \frac{\partial A}{\partial q}\frac{\partial B}{\partial p} - \frac{\partial A}{\partial p}\frac{\partial B}{\partial q},
 $$
 
-the result of §4.4 can be written compactly as the **Liouville equation**:
+the result of §4.3 can be written compactly as the **Liouville equation**:
 
 $$
 \frac{\partial \rho}{\partial t}

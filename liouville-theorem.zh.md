@@ -56,34 +56,13 @@ $$
 
 > 对应笔记第 1 张图。把系综看作相空间中的流体，用流体守恒（连续性方程）的语言推导。
 
-### 4.1 全导数展开
-
-密度 $\rho(t,q,p)$ 沿一条轨迹的全时间导数为
-
-$$
-\frac{d\rho}{dt}
-= \frac{\partial \rho}{\partial t}
-+ \frac{\partial \rho}{\partial q}\,\dot q
-+ \frac{\partial \rho}{\partial p}\,\dot p .
-$$
-
-代入哈密顿方程 $\dot q = \partial H/\partial p$、$\dot p = -\partial H/\partial q$：
-
-$$
-\frac{d\rho}{dt}
-= \frac{\partial \rho}{\partial t}
-+ \frac{\partial \rho}{\partial q}\frac{\partial H}{\partial p}
-- \frac{\partial \rho}{\partial p}\frac{\partial H}{\partial q}.
-\tag{4.1}
-$$
-
-### 4.2 连续性方程（物理前提）
+### 4.1 连续性方程（物理前提）
 
 系综中系统的总数守恒——代表点既不产生也不消灭。对相空间中任一固定区域，其内部系统数的减少率等于经边界流出的净通量；用散度定理化为微分形式，便得到相空间中的**连续性方程**：
 
 $$
 \boxed{\ \frac{\partial \rho}{\partial t} + \nabla\cdot(\rho\vec v) = 0\ }
-\tag{4.2}
+\tag{4.1}
 $$
 
 它与流体力学中的质量守恒方程形式完全一致，是本证明的**物理出发点**——来自"系统数守恒"这一物理事实，而非由代数推导得来。
@@ -98,7 +77,7 @@ $$
 + \rho\underbrace{\left(\frac{\partial \dot q}{\partial q} + \frac{\partial \dot p}{\partial p}\right)}_{\nabla\cdot\vec v}.
 $$
 
-### 4.3 关键引理：相流无散度
+### 4.2 关键引理：相流无散度
 
 计算相空间速度场的散度，代入哈密顿方程：
 
@@ -114,14 +93,14 @@ $$
 
 $$
 \boxed{\ \nabla\cdot\vec v = 0\ }
-\tag{4.3}
+\tag{4.2}
 $$
 
 **这是全部证明的核心**：哈密顿流是无散度的，相空间"流体"不可压缩。
 
-### 4.4 收尾
+### 4.3 收尾：代回并展开全导数
 
-把 (4.3) 代回连续性方程 (4.2)。由于 $\nabla\cdot(\rho\vec v) = (\vec v\cdot\nabla)\rho + \rho\,(\nabla\cdot\vec v)$，第二项为零，故
+把引理 (4.2) $\nabla\cdot\vec v = 0$ 代入 4.1 节的恒等式，第二项为零，于是 $\nabla\cdot(\rho\vec v) = (\vec v\cdot\nabla)\rho$。再代回连续性方程 (4.1)：
 
 $$
 \frac{\partial \rho}{\partial t}
@@ -130,11 +109,20 @@ $$
 = -\frac{\partial \rho}{\partial q}\dot q - \frac{\partial \rho}{\partial p}\dot p .
 $$
 
-移项即得
+到这一步才引入**全导数展开**：密度 $\rho(t,q,p)$ 沿一条轨迹的全时间导数为
 
 $$
 \frac{d\rho}{dt}
 = \frac{\partial \rho}{\partial t}
++ \frac{\partial \rho}{\partial q}\dot q
++ \frac{\partial \rho}{\partial p}\dot p .
+$$
+
+把上面得到的 $\partial\rho/\partial t$ 代入，两组项恰好相消：
+
+$$
+\frac{d\rho}{dt}
+= \left(-\frac{\partial \rho}{\partial q}\dot q - \frac{\partial \rho}{\partial p}\dot p\right)
 + \frac{\partial \rho}{\partial q}\dot q
 + \frac{\partial \rho}{\partial p}\dot p
 = 0 .
@@ -294,7 +282,7 @@ $$
 \{A, B\} \equiv \frac{\partial A}{\partial q}\frac{\partial B}{\partial p} - \frac{\partial A}{\partial p}\frac{\partial B}{\partial q},
 $$
 
-则证明一 4.4 节的结果可写成紧凑的**刘维尔方程**：
+则证明一 4.3 节的结果可写成紧凑的**刘维尔方程**：
 
 $$
 \frac{\partial \rho}{\partial t}
