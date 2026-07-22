@@ -169,6 +169,10 @@ $$
 
 ### 5.2 The change in area from the boundary strips
 
+![Infinitesimal phase-space area element and its four boundary strips S1–S4](fig-liouville-area-strips.svg)
+
+*Figure.* The infinitesimal area element $\delta q\times\delta p$ (black box) and its four boundary strips: $S_1,S_2$ (left, right) come from the displacement $\dot q\,dt$ along $q$; $S_3,S_4$ (bottom, top) come from the displacement $\dot p\,dt$ along $p$. The leading edges (right, top) count as positive area swept, the trailing edges (left, bottom) as negative.
+
 Write the evolved area as "the original rectangle $+$ the net contribution of the four boundary strips." Let $S_1,S_2,S_3,S_4$ be the areas swept by the left, right, bottom and top edges (labelled as in the notes); the change in area is
 
 $$
