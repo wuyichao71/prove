@@ -6,7 +6,26 @@
 
 ---
 
-## 1. Setup
+## 1. Ensemble averages as sample averages
+
+By the law of large numbers together with the ergodic hypothesis, the
+expectation of any observable $A$ under a distribution $\rho$ can be estimated by
+a plain average over samples $\{\vec x_i\}$ drawn from $\rho$:
+
+$$
+\langle A\rangle = \int A(\vec x)\,\rho(\vec x)\,d\vec x
+\;\approx\; \frac{1}{N}\sum_{i=1}^{N} A(\vec x_i).
+$$
+
+This is the estimator we would use if we could sample the target distribution
+directly. The rest of this note handles the case where sampling is instead done
+under a *biased* distribution $p_b$: the reweighted estimator of §4 is exactly
+this sample average with each term multiplied by the importance weight, reducing
+to the formula above when the bias $b\equiv 0$.
+
+---
+
+## 2. Setup
 
 We work with configurations $\vec x$ (a point in configuration space). Two
 Boltzmann-type probability densities are compared.
@@ -32,7 +51,7 @@ These two lines are the first two lines of the notes.
 
 ---
 
-## 2. The reweighting factor
+## 3. The reweighting factor
 
 To recover an unbiased average from biased samples we need the pointwise ratio
 of the two densities — the **importance weight**:
@@ -64,7 +83,7 @@ factor $\exp\!\big(b(\vec x)\big)$, which simply undoes the bias that was applie
 
 ---
 
-## 3. Normalized weight
+## 4. Normalized weight
 
 In practice the prefactor $c_b/c$ is unknown, because the partition functions are
 not computed directly. What is used is the **self-normalized weight** $W(\vec x)$,
@@ -83,7 +102,7 @@ W(\vec x)
 $$
 
 Since the denominator is exactly $p_b(\vec x)$, this reduces to the same result
-as §2: $W(\vec x) = w(\vec x) = \dfrac{c_b}{c}\exp\!\big(b(\vec x)\big)$. This is the
+as §3: $W(\vec x) = w(\vec x) = \dfrac{c_b}{c}\exp\!\big(b(\vec x)\big)$. This is the
 bottom line of the notes.
 
 The unknown constant $c_b/c$ drops out whenever the weights are normalized over a
@@ -101,7 +120,7 @@ $$
 
 ---
 
-## 4. Remark
+## 5. Remark
 
 The whole derivation rests on one cancellation: because $p$ and $p_b$ share the
 same underlying potential $u_0$, their ratio keeps no dependence on $u_0$ — only
