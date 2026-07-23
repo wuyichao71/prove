@@ -108,8 +108,7 @@ of the two densities — the **importance weight**:
 
 $$
 w(\mathbf{x})  =  \frac{p(\mathbf{x})}{p_b(\mathbf{x})}
-= 
-\frac{\dfrac{1}{c} \exp\big(-u_0(\mathbf{x})\big)}
+= \frac{\dfrac{1}{c} \exp\big(-u_0(\mathbf{x})\big)}
 {\dfrac{1}{c_b} \exp\big(-u_0(\mathbf{x}) - b(\mathbf{x})\big)} .
 $$
 
@@ -123,10 +122,8 @@ so the shared $-u_0(\mathbf{x})$ cancels and only the bias survives in the expon
 
 $$
 w(\mathbf{x})
-= 
-\frac{1}{c}\cdot\frac{\exp\big(b(\mathbf{x})\big)}{ 1/c_b }
-= 
-\boxed{ \frac{c_b}{c} \exp\big(b(\mathbf{x})\big)  }.
+= \frac{1}{c}\cdot\frac{\exp\big(b(\mathbf{x})\big)}{ 1/c_b }
+= \boxed{ \frac{c_b}{c} \exp\big(b(\mathbf{x})\big)  }.
 $$
 
 This is the middle block of the notes. The weight is the product of a constant
@@ -145,12 +142,10 @@ in the notes:
 
 $$
 W(\mathbf{x})
-= 
-\frac{1}{c} 
+= \frac{1}{c} 
 \frac{\exp\big(-u_0(\mathbf{x})\big)}
 { c_b^{-1}\exp\big(-u_0(\mathbf{x}) - b(\mathbf{x})\big) }
-= 
-\frac{c_b}{c} \exp\big(b(\mathbf{x})\big).
+= \frac{c_b}{c} \exp\big(b(\mathbf{x})\big).
 $$
 
 Since the denominator is exactly $p_b(\mathbf{x})$, this reduces to the same result

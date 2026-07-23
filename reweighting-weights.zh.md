@@ -83,8 +83,7 @@ $$
 
 $$
 w(\mathbf{x})  =  \frac{p(\mathbf{x})}{p_b(\mathbf{x})}
-= 
-\frac{\dfrac{1}{c} \exp\big(-u_0(\mathbf{x})\big)}
+= \frac{\dfrac{1}{c} \exp\big(-u_0(\mathbf{x})\big)}
 {\dfrac{1}{c_b} \exp\big(-u_0(\mathbf{x}) - b(\mathbf{x})\big)} .
 $$
 
@@ -98,10 +97,8 @@ $$
 
 $$
 w(\mathbf{x})
-= 
-\frac{1}{c}\cdot\frac{\exp\big(b(\mathbf{x})\big)}{ 1/c_b }
-= 
-\boxed{ \frac{c_b}{c} \exp\big(b(\mathbf{x})\big)  }.
+= \frac{1}{c}\cdot\frac{\exp\big(b(\mathbf{x})\big)}{ 1/c_b }
+= \boxed{ \frac{c_b}{c} \exp\big(b(\mathbf{x})\big)  }.
 $$
 
 这对应笔记的中间部分。权重由一个常数前因子 $c_b/c$（两个配分函数之比）与依赖构型的因子 $\exp\big(b(\mathbf{x})\big)$ 相乘而成，后者恰好抵消了先前施加的偏置。
@@ -114,12 +111,10 @@ $$
 
 $$
 W(\mathbf{x})
-= 
-\frac{1}{c} 
+= \frac{1}{c} 
 \frac{\exp\big(-u_0(\mathbf{x})\big)}
 { c_b^{-1}\exp\big(-u_0(\mathbf{x}) - b(\mathbf{x})\big) }
-= 
-\frac{c_b}{c} \exp\big(b(\mathbf{x})\big).
+= \frac{c_b}{c} \exp\big(b(\mathbf{x})\big).
 $$
 
 由于分母恰为 $p_b(\mathbf{x})$，结果与第 3 节相同：$W(\mathbf{x}) = w(\mathbf{x}) = \dfrac{c_b}{c}\exp\big(b(\mathbf{x})\big)$。这对应笔记的最后一行。
