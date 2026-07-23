@@ -27,7 +27,7 @@ $$
 Define the phase-space **velocity field**:
 
 $$
-\vec v \equiv (\dot q,\ \dot p) = \left(\frac{\partial H}{\partial p},\ -\frac{\partial H}{\partial q}\right).
+\mathbf{v} \equiv (\dot q,\ \dot p) = \left(\frac{\partial H}{\partial p},\ -\frac{\partial H}{\partial q}\right).
 $$
 
 The divergence operator in phase space is $\nabla \equiv \left(\dfrac{\partial}{\partial q},\ \dfrac{\partial}{\partial p}\right)$.
@@ -61,7 +61,7 @@ $$
 The total number of systems in the ensemble is conserved — representative points are neither created nor destroyed. For any fixed region of phase space, the rate of decrease of the enclosed systems equals the net outward flux through its boundary; recast in differential form via the divergence theorem, this gives the **continuity equation** in phase space:
 
 $$
-\boxed{\ \frac{\partial \rho}{\partial t} + \nabla\cdot(\rho\vec v) = 0\ }
+\boxed{\ \frac{\partial \rho}{\partial t} + \nabla\cdot(\rho\mathbf{v}) = 0\ }
 \tag{4.1}
 $$
 
@@ -70,11 +70,11 @@ This has exactly the form of the mass-conservation equation in fluid mechanics; 
 To prepare for substitution, expand the density-flux divergence into an identity with the product rule:
 
 $$
-\nabla\cdot(\rho\vec v)
+\nabla\cdot(\rho\mathbf{v})
 = \frac{\partial}{\partial q}\big(\rho\,\dot q\big)
 + \frac{\partial}{\partial p}\big(\rho\,\dot p\big)
-= \underbrace{\left(\frac{\partial \rho}{\partial q}\dot q + \frac{\partial \rho}{\partial p}\dot p\right)}_{(\vec v\cdot\nabla)\rho}
-+ \rho\underbrace{\left(\frac{\partial \dot q}{\partial q} + \frac{\partial \dot p}{\partial p}\right)}_{\nabla\cdot\vec v}.
+= \underbrace{\left(\frac{\partial \rho}{\partial q}\dot q + \frac{\partial \rho}{\partial p}\dot p\right)}_{(\mathbf{v}\cdot\nabla)\rho}
++ \rho\underbrace{\left(\frac{\partial \dot q}{\partial q} + \frac{\partial \dot p}{\partial p}\right)}_{\nabla\cdot\mathbf{v}}.
 $$
 
 ### 4.2 Key lemma: the flow is divergence-free
@@ -82,7 +82,7 @@ $$
 Compute the divergence of the phase-space velocity field, substituting Hamilton's equations:
 
 $$
-\nabla\cdot\vec v
+\nabla\cdot\mathbf{v}
 = \frac{\partial \dot q}{\partial q} + \frac{\partial \dot p}{\partial p}
 = \frac{\partial}{\partial q}\!\left(\frac{\partial H}{\partial p}\right)
 + \frac{\partial}{\partial p}\!\left(-\frac{\partial H}{\partial q}\right)
@@ -92,7 +92,7 @@ $$
 As long as the second partials of $H$ are continuous, the mixed partials commute (Clairaut/Schwarz theorem), so
 
 $$
-\boxed{\ \nabla\cdot\vec v = 0\ }
+\boxed{\ \nabla\cdot\mathbf{v} = 0\ }
 \tag{4.2}
 $$
 
@@ -100,12 +100,12 @@ $$
 
 ### 4.3 Conclusion: substitute back, then expand the total derivative
 
-Substitute the lemma (4.2) $\nabla\cdot\vec v = 0$ into the identity from §4.1; the second term vanishes, so $\nabla\cdot(\rho\vec v) = (\vec v\cdot\nabla)\rho$. Putting this back into the continuity equation (4.1):
+Substitute the lemma (4.2) $\nabla\cdot\mathbf{v} = 0$ into the identity from §4.1; the second term vanishes, so $\nabla\cdot(\rho\mathbf{v}) = (\mathbf{v}\cdot\nabla)\rho$. Putting this back into the continuity equation (4.1):
 
 $$
 \frac{\partial \rho}{\partial t}
-= -\,\nabla\cdot(\rho\vec v)
-= -\,\vec v\cdot\nabla\rho
+= -\,\nabla\cdot(\rho\mathbf{v})
+= -\,\mathbf{v}\cdot\nabla\rho
 = -\frac{\partial \rho}{\partial q}\dot q - \frac{\partial \rho}{\partial p}\dot p .
 $$
 
@@ -204,7 +204,7 @@ Adding the two,
 $$
 \Delta S=(S_2-S_1)+(S_4-S_3)
 =\left(\frac{\partial \dot q}{\partial q}+\frac{\partial \dot p}{\partial p}\right)\delta q\,\delta p\,\delta t
-=(\nabla\cdot\vec v)\,\delta q\,\delta p\,\delta t.
+=(\nabla\cdot\mathbf{v})\,\delta q\,\delta p\,\delta t.
 $$
 
 Substituting Hamilton's equations $\dot q=\partial H/\partial p$, $\dot p=-\partial H/\partial q$, the bracket is exactly the divergence of the flow, and
@@ -222,13 +222,13 @@ $$
 
 so the evolved area is still $\delta q\,\delta p$. For finite times, compose the infinitesimal steps and the area is preserved throughout. $\blacksquare$
 
-This is the same conclusion as **Proof 3** (time-evolution Jacobian method) by a different route: there one computes $\det J=1+(\nabla\cdot\vec v)\,\delta t$, here $\Delta S=(\nabla\cdot\vec v)\,\delta q\,\delta p\,\delta t$ — both reduce to $\nabla\cdot\vec v=0$.
+This is the same conclusion as **Proof 3** (time-evolution Jacobian method) by a different route: there one computes $\det J=1+(\nabla\cdot\mathbf{v})\,\delta t$, here $\Delta S=(\nabla\cdot\mathbf{v})\,\delta q\,\delta p\,\delta t$ — both reduce to $\nabla\cdot\mathbf{v}=0$.
 
 ---
 
 ## 6. Proof 3 — Volume Invariance under Time Evolution (Jacobian-determinant method)
 
-> Treat time evolution itself as a map on phase space and compute its Jacobian determinant directly; expanded to first order it equals 1. This is the infinitesimal special case of Proof 4 (canonical transformations), verified here independently using only Hamilton's equations and $\nabla\cdot\vec v=0$ from Proof 1.
+> Treat time evolution itself as a map on phase space and compute its Jacobian determinant directly; expanded to first order it equals 1. This is the infinitesimal special case of Proof 4 (canonical transformations), verified here independently using only Hamilton's equations and $\nabla\cdot\mathbf{v}=0$ from Proof 1.
 
 After an infinitesimal time $\delta t$, a phase point moves according to Hamilton's equations, giving the map $(q,p)\to(Q,P)$:
 
@@ -259,16 +259,16 @@ $$
 = 1 + \left(\frac{\partial \dot q}{\partial q} + \frac{\partial \dot p}{\partial p}\right)\delta t + O(\delta t^2).
 $$
 
-The bracket is precisely the divergence of the flow $\nabla\cdot\vec v$, and Proof 1 already showed $\nabla\cdot\vec v = 0$, hence
+The bracket is precisely the divergence of the flow $\nabla\cdot\mathbf{v}$, and Proof 1 already showed $\nabla\cdot\mathbf{v} = 0$, hence
 
 $$
-\boxed{\ \det J = 1 + (\nabla\cdot\vec v)\,\delta t + O(\delta t^2) = 1\ }
+\boxed{\ \det J = 1 + (\nabla\cdot\mathbf{v})\,\delta t + O(\delta t^2) = 1\ }
 \quad\Longrightarrow\quad
 dQ\,dP = dq\,dp .
 \qquad\blacksquare
 $$
 
-For finite times, simply compose the infinitesimal steps; the determinant stays identically 1. This is the same fact as the area change $\Delta S=(\nabla\cdot\vec v)\,\delta q\,\delta p\,\delta t$ computed in Proof 2 (geometric area method), by a different route, and ties volume invariance back to Proof 1: **"divergence-free" and "unit Jacobian" are the same fact, at first order.**
+For finite times, simply compose the infinitesimal steps; the determinant stays identically 1. This is the same fact as the area change $\Delta S=(\nabla\cdot\mathbf{v})\,\delta q\,\delta p\,\delta t$ computed in Proof 2 (geometric area method), by a different route, and ties volume invariance back to Proof 1: **"divergence-free" and "unit Jacobian" are the same fact, at first order.**
 
 ---
 
@@ -398,15 +398,15 @@ where the classical Poisson bracket $\{\cdot,\cdot\}$ corresponds to the quantum
 
 ## 9. Physical Interpretation
 
-- **Incompressible phase flow:** $\nabla\cdot\vec v = 0$ means the "fluid" of representative points is neither compressed nor expanded. A blob of phase points initially occupying an area $A$ can be strongly stretched and distorted (like the deformed parallelogram sketched on the third page of notes), yet its **area/volume always remains $A$**.
+- **Incompressible phase flow:** $\nabla\cdot\mathbf{v} = 0$ means the "fluid" of representative points is neither compressed nor expanded. A blob of phase points initially occupying an area $A$ can be strongly stretched and distorted (like the deformed parallelogram sketched on the third page of notes), yet its **area/volume always remains $A$**.
 
 - **Ensemble evolution:** density conservation along trajectories, $d\rho/dt=0$, guarantees the self-consistency of describing a statistical ensemble by a phase-space density — probability is neither created from nothing nor destroyed.
 
 - **Foundation of statistical mechanics:** Liouville's Theorem is the dynamical basis for the "equal a priori probability" postulate of the **microcanonical ensemble**: a density $\rho = \text{const}$ that is uniform on the energy shell is a stationary solution of the Liouville equation ($\partial\rho/\partial t = 0$), and hence a natural equilibrium distribution.
 
-- **Unifying the proofs:** the core of Proof 1, $\nabla\cdot\vec v = 0$, the area change of Proof 2, $\Delta S=(\nabla\cdot\vec v)\,\delta q\,\delta p\,\delta t$, and Proof 3's $\det J = 1+(\nabla\cdot\vec v)\,\delta t$ are **the same fact** (Proof 4 gives $\{Q,P\}=1$ from the symplectic structure of canonical transformations) — because the Jacobian expanded to first order is exactly
+- **Unifying the proofs:** the core of Proof 1, $\nabla\cdot\mathbf{v} = 0$, the area change of Proof 2, $\Delta S=(\nabla\cdot\mathbf{v})\,\delta q\,\delta p\,\delta t$, and Proof 3's $\det J = 1+(\nabla\cdot\mathbf{v})\,\delta t$ are **the same fact** (Proof 4 gives $\{Q,P\}=1$ from the symplectic structure of canonical transformations) — because the Jacobian expanded to first order is exactly
 $$
-\det J = 1 + (\nabla\cdot\vec v)\,\delta t + O(\delta t^2),
+\det J = 1 + (\nabla\cdot\mathbf{v})\,\delta t + O(\delta t^2),
 $$
 so divergence-free $\iff$ zero first-order rate of volume change $\iff$ volume conserved. The former is the differential (local, instantaneous) view, the latter the integral (global, finite-step) view; they are two sides of one coin.
 
@@ -419,8 +419,8 @@ so divergence-free $\iff$ zero first-order rate of volume change $\iff$ volume c
 | $q,\ p$ | generalized coordinate & momentum |
 | $H(t,q,p)$ | Hamiltonian |
 | $\rho(t,q,p)$ | phase-space density |
-| $\vec v = (\dot q,\dot p)$ | phase-space velocity field |
-| $\nabla\cdot\vec v$ | divergence of the flow |
+| $\mathbf{v} = (\dot q,\dot p)$ | phase-space velocity field |
+| $\nabla\cdot\mathbf{v}$ | divergence of the flow |
 | $J,\ \det J$ | Jacobian matrix & determinant |
 | $\{A,B\}$ | Poisson bracket |
 | $(Q,P)$ | evolved / transformed canonical variables |

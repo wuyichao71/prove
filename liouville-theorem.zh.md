@@ -27,7 +27,7 @@ $$
 定义相空间中的"**速度场**"：
 
 $$
-\vec v \equiv (\dot q,\ \dot p) = \left(\frac{\partial H}{\partial p},\ -\frac{\partial H}{\partial q}\right).
+\mathbf{v} \equiv (\dot q,\ \dot p) = \left(\frac{\partial H}{\partial p},\ -\frac{\partial H}{\partial q}\right).
 $$
 
 相空间中的散度算子为 $\nabla \equiv \left(\dfrac{\partial}{\partial q},\ \dfrac{\partial}{\partial p}\right)$。
@@ -61,7 +61,7 @@ $$
 系综中系统的总数守恒——代表点既不产生也不消灭。对相空间中任一固定区域，其内部系统数的减少率等于经边界流出的净通量；用散度定理化为微分形式，便得到相空间中的**连续性方程**：
 
 $$
-\boxed{\ \frac{\partial \rho}{\partial t} + \nabla\cdot(\rho\vec v) = 0\ }
+\boxed{\ \frac{\partial \rho}{\partial t} + \nabla\cdot(\rho\mathbf{v}) = 0\ }
 \tag{4.1}
 $$
 
@@ -70,11 +70,11 @@ $$
 为便于后面代入，把带密度的通量散度用乘积法则展开成一个恒等式：
 
 $$
-\nabla\cdot(\rho\vec v)
+\nabla\cdot(\rho\mathbf{v})
 = \frac{\partial}{\partial q}\big(\rho\,\dot q\big)
 + \frac{\partial}{\partial p}\big(\rho\,\dot p\big)
-= \underbrace{\left(\frac{\partial \rho}{\partial q}\dot q + \frac{\partial \rho}{\partial p}\dot p\right)}_{(\vec v\cdot\nabla)\rho}
-+ \rho\underbrace{\left(\frac{\partial \dot q}{\partial q} + \frac{\partial \dot p}{\partial p}\right)}_{\nabla\cdot\vec v}.
+= \underbrace{\left(\frac{\partial \rho}{\partial q}\dot q + \frac{\partial \rho}{\partial p}\dot p\right)}_{(\mathbf{v}\cdot\nabla)\rho}
++ \rho\underbrace{\left(\frac{\partial \dot q}{\partial q} + \frac{\partial \dot p}{\partial p}\right)}_{\nabla\cdot\mathbf{v}}.
 $$
 
 ### 4.2 关键引理：相流无散度
@@ -82,7 +82,7 @@ $$
 计算相空间速度场的散度，代入哈密顿方程：
 
 $$
-\nabla\cdot\vec v
+\nabla\cdot\mathbf{v}
 = \frac{\partial \dot q}{\partial q} + \frac{\partial \dot p}{\partial p}
 = \frac{\partial}{\partial q}\!\left(\frac{\partial H}{\partial p}\right)
 + \frac{\partial}{\partial p}\!\left(-\frac{\partial H}{\partial q}\right)
@@ -92,7 +92,7 @@ $$
 只要 $H$ 二阶偏导连续，混合偏导可交换次序（Clairaut/Schwarz 定理），故
 
 $$
-\boxed{\ \nabla\cdot\vec v = 0\ }
+\boxed{\ \nabla\cdot\mathbf{v} = 0\ }
 \tag{4.2}
 $$
 
@@ -100,12 +100,12 @@ $$
 
 ### 4.3 收尾：代回并展开全导数
 
-把引理 (4.2) $\nabla\cdot\vec v = 0$ 代入 4.1 节的恒等式，第二项为零，于是 $\nabla\cdot(\rho\vec v) = (\vec v\cdot\nabla)\rho$。再代回连续性方程 (4.1)：
+把引理 (4.2) $\nabla\cdot\mathbf{v} = 0$ 代入 4.1 节的恒等式，第二项为零，于是 $\nabla\cdot(\rho\mathbf{v}) = (\mathbf{v}\cdot\nabla)\rho$。再代回连续性方程 (4.1)：
 
 $$
 \frac{\partial \rho}{\partial t}
-= -\,\nabla\cdot(\rho\vec v)
-= -\,\vec v\cdot\nabla\rho
+= -\,\nabla\cdot(\rho\mathbf{v})
+= -\,\mathbf{v}\cdot\nabla\rho
 = -\frac{\partial \rho}{\partial q}\dot q - \frac{\partial \rho}{\partial p}\dot p .
 $$
 
@@ -204,7 +204,7 @@ $$
 $$
 \Delta S=(S_2-S_1)+(S_4-S_3)
 =\left(\frac{\partial \dot q}{\partial q}+\frac{\partial \dot p}{\partial p}\right)\delta q\,\delta p\,\delta t
-=(\nabla\cdot\vec v)\,\delta q\,\delta p\,\delta t.
+=(\nabla\cdot\mathbf{v})\,\delta q\,\delta p\,\delta t.
 $$
 
 代入哈密顿方程 $\dot q=\partial H/\partial p$、$\dot p=-\partial H/\partial q$，括号内正是相流散度，而
@@ -222,13 +222,13 @@ $$
 
 即演化后面积仍为 $\delta q\,\delta p$。对有限时间，把无穷小步逐次相乘，面积恒保持不变。 $\blacksquare$
 
-这与**证明三**（时间演化的雅可比法）是同一结论的两种算法：那里算 $\det J=1+(\nabla\cdot\vec v)\,\delta t$，这里算 $\Delta S=(\nabla\cdot\vec v)\,\delta q\,\delta p\,\delta t$——本质都是 $\nabla\cdot\vec v=0$。
+这与**证明三**（时间演化的雅可比法）是同一结论的两种算法：那里算 $\det J=1+(\nabla\cdot\mathbf{v})\,\delta t$，这里算 $\Delta S=(\nabla\cdot\mathbf{v})\,\delta q\,\delta p\,\delta t$——本质都是 $\nabla\cdot\mathbf{v}=0$。
 
 ---
 
 ## 6. 证明三：时间演化下相空间体积不变（雅可比行列式法）
 
-> 把时间演化本身看作相空间上的一个映射，直接计算它的雅可比行列式，展开到一阶即得体积不变。这是证明四（正则变换）的无穷小特例，但此处独立地直接验证，只用到哈密顿方程与证明一的 $\nabla\cdot\vec v=0$。
+> 把时间演化本身看作相空间上的一个映射，直接计算它的雅可比行列式，展开到一阶即得体积不变。这是证明四（正则变换）的无穷小特例，但此处独立地直接验证，只用到哈密顿方程与证明一的 $\nabla\cdot\mathbf{v}=0$。
 
 经过无穷小时间 $\delta t$，相点按哈密顿方程移动，构成映射 $(q,p)\to(Q,P)$：
 
@@ -259,16 +259,16 @@ $$
 = 1 + \left(\frac{\partial \dot q}{\partial q} + \frac{\partial \dot p}{\partial p}\right)\delta t + O(\delta t^2).
 $$
 
-括号里正是相流的散度 $\nabla\cdot\vec v$，而证明一已证 $\nabla\cdot\vec v = 0$，故
+括号里正是相流的散度 $\nabla\cdot\mathbf{v}$，而证明一已证 $\nabla\cdot\mathbf{v} = 0$，故
 
 $$
-\boxed{\ \det J = 1 + (\nabla\cdot\vec v)\,\delta t + O(\delta t^2) = 1\ }
+\boxed{\ \det J = 1 + (\nabla\cdot\mathbf{v})\,\delta t + O(\delta t^2) = 1\ }
 \quad\Longrightarrow\quad
 dQ\,dP = dq\,dp .
 \qquad\blacksquare
 $$
 
-对有限时间，只需把无穷小步连乘，行列式仍恒为 1。它与证明二（几何面积法）算的 $\Delta S=(\nabla\cdot\vec v)\,\delta q\,\delta p\,\delta t$ 是同一件事的两种算法，也把体积不变接回了证明一：**"散度为零"与"雅可比为一"是同一件事的一阶体现**。
+对有限时间，只需把无穷小步连乘，行列式仍恒为 1。它与证明二（几何面积法）算的 $\Delta S=(\nabla\cdot\mathbf{v})\,\delta q\,\delta p\,\delta t$ 是同一件事的两种算法，也把体积不变接回了证明一：**"散度为零"与"雅可比为一"是同一件事的一阶体现**。
 
 ---
 
@@ -399,15 +399,15 @@ $$
 
 ## 9. 物理意义
 
-- **不可压缩相流：** $\nabla\cdot\vec v = 0$ 意味着代表点构成的"流体"既不被压缩也不膨胀。一团初始占据面积 $A$ 的相点，演化后形状可以被强烈拉伸、扭曲（如笔记第 3 张图所画的平行四边形变形），但**面积/体积始终保持 $A$ 不变**。
+- **不可压缩相流：** $\nabla\cdot\mathbf{v} = 0$ 意味着代表点构成的"流体"既不被压缩也不膨胀。一团初始占据面积 $A$ 的相点，演化后形状可以被强烈拉伸、扭曲（如笔记第 3 张图所画的平行四边形变形），但**面积/体积始终保持 $A$ 不变**。
 
 - **系综演化：** 密度沿轨迹守恒 $d\rho/dt=0$，保证了用相空间密度描述统计系综的自洽性——概率既不会凭空产生也不会消失。
 
 - **统计力学基础：** 刘维尔定理是**微正则系综**中"等概率假设"的动力学依据：在能量壳层上均匀的密度分布 $\rho = \text{const}$ 是刘维尔方程的定态解（$\partial\rho/\partial t = 0$），因而是自然的平衡态分布。
 
-- **各证明的统一：** 证明一的核心 $\nabla\cdot\vec v = 0$、证明二的面积改变量 $\Delta S=(\nabla\cdot\vec v)\,\delta q\,\delta p\,\delta t$ 与证明三的 $\det J = 1+(\nabla\cdot\vec v)\,\delta t$ **本质是同一件事**（证明四则从正则变换的辛结构给出 $\{Q,P\}=1$）——因为雅可比行列式展开到一阶恰为
+- **各证明的统一：** 证明一的核心 $\nabla\cdot\mathbf{v} = 0$、证明二的面积改变量 $\Delta S=(\nabla\cdot\mathbf{v})\,\delta q\,\delta p\,\delta t$ 与证明三的 $\det J = 1+(\nabla\cdot\mathbf{v})\,\delta t$ **本质是同一件事**（证明四则从正则变换的辛结构给出 $\{Q,P\}=1$）——因为雅可比行列式展开到一阶恰为
 $$
-\det J = 1 + (\nabla\cdot\vec v)\,\delta t + O(\delta t^2),
+\det J = 1 + (\nabla\cdot\mathbf{v})\,\delta t + O(\delta t^2),
 $$
 散度为零 $\iff$ 一阶体积变化率为零 $\iff$ 体积守恒。前者是微分（局部、瞬时）视角，后者是积分（整体、有限步）视角，二者互为表里。
 
@@ -420,8 +420,8 @@ $$
 | $q,\ p$ | 广义坐标、广义动量 |
 | $H(t,q,p)$ | 哈密顿量 |
 | $\rho(t,q,p)$ | 相空间密度 |
-| $\vec v = (\dot q,\dot p)$ | 相空间速度场 |
-| $\nabla\cdot\vec v$ | 相流散度 |
+| $\mathbf{v} = (\dot q,\dot p)$ | 相空间速度场 |
+| $\nabla\cdot\mathbf{v}$ | 相流散度 |
 | $J,\ \det J$ | 雅可比矩阵与其行列式 |
 | $\{A,B\}$ | 泊松括号 |
 | $(Q,P)$ | 演化后 / 变换后的正则变量 |
