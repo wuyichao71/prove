@@ -21,20 +21,24 @@ $$
 
 考察构型 $\vec x$（构型空间中的一点），比较两个玻尔兹曼型概率密度。
 
-- **目标（无偏）分布。** 记约化势能为 $u_0(\vec x)$，
+**目标（无偏）分布。** 记约化势能为 $u_0(\vec x)$，
+
 $$
 p(\vec x) = \frac{1}{c}\,\exp\!\big(-u_0(\vec x)\big),
 \qquad
 c = \int \exp\!\big(-u_0(\vec x)\big)\,d\vec x .
 $$
+
 其中 $c$ 是配分函数，使 $p$ 的积分归一。
 
-- **有偏分布。** 在 $u_0$ 上叠加一个偏置势 $b(\vec x)$，
+**有偏分布。** 在 $u_0$ 上叠加一个偏置势 $b(\vec x)$，
+
 $$
 p_b(\vec x) = \frac{1}{c_b}\,\exp\!\big(-u_0(\vec x) - b(\vec x)\big),
 \qquad
 c_b = \int \exp\!\big(-u_0(\vec x) - b(\vec x)\big)\,d\vec x .
 $$
+
 采样（例如增强采样或伞形采样模拟）在 $p_b$ 下进行，而我们想要的是 $p$ 下的平均值。
 
 以上两式对应笔记的前两行。
@@ -53,9 +57,11 @@ w(\vec x) \;=\; \frac{p(\vec x)}{p_b(\vec x)}
 $$
 
 指数因子通过其宗量相减合并，
+
 $$
 -u_0(\vec x) \;-\; \big(-u_0(\vec x) - b(\vec x)\big) \;=\; b(\vec x),
 $$
+
 公共的 $-u_0(\vec x)$ 相消，指数上只剩下偏置项：
 
 $$
@@ -87,11 +93,14 @@ $$
 由于分母恰为 $p_b(\vec x)$，结果与第 3 节相同：$W(\vec x) = w(\vec x) = \dfrac{c_b}{c}\exp\!\big(b(\vec x)\big)$。这对应笔记的最后一行。
 
 只要在样本集 $\{\vec x_i\}$ 上对权重做归一化，未知常数 $c_b/c$ 就自动消去：
+
 $$
 \widehat{W}(\vec x_i) = \frac{w(\vec x_i)}{\sum_j w(\vec x_j)}
 = \frac{\exp\!\big(b(\vec x_i)\big)}{\sum_j \exp\!\big(b(\vec x_j)\big)} .
 $$
+
 于是任意观测量 $A$ 的无偏系综平均都可仅用偏置值来估计：
+
 $$
 \langle A\rangle_p \;\approx\; \sum_i \widehat{W}(\vec x_i)\,A(\vec x_i)
 \;=\; \frac{\sum_i A(\vec x_i)\,e^{\,b(\vec x_i)}}{\sum_i e^{\,b(\vec x_i)}}.

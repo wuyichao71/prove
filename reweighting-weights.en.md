@@ -30,20 +30,24 @@ to the formula above when the bias $b\equiv 0$.
 We work with configurations $\vec x$ (a point in configuration space). Two
 Boltzmann-type probability densities are compared.
 
-- **Target (unbiased) distribution.** With reduced potential $u_0(\vec x)$,
+**Target (unbiased) distribution.** With reduced potential $u_0(\vec x)$,
+
 $$
 p(\vec x) = \frac{1}{c}\,\exp\!\big(-u_0(\vec x)\big),
 \qquad
 c = \int \exp\!\big(-u_0(\vec x)\big)\,d\vec x .
 $$
+
 Here $c$ is the partition function that normalizes $p$ to unit integral.
 
-- **Biased distribution.** A bias potential $b(\vec x)$ is added to $u_0$,
+**Biased distribution.** A bias potential $b(\vec x)$ is added to $u_0$,
+
 $$
 p_b(\vec x) = \frac{1}{c_b}\,\exp\!\big(-u_0(\vec x) - b(\vec x)\big),
 \qquad
 c_b = \int \exp\!\big(-u_0(\vec x) - b(\vec x)\big)\,d\vec x .
 $$
+
 Sampling (e.g. an enhanced-sampling or umbrella-sampling simulation) is carried
 out under $p_b$; we want averages under $p$.
 
@@ -64,9 +68,11 @@ w(\vec x) \;=\; \frac{p(\vec x)}{p_b(\vec x)}
 $$
 
 The exponential factors combine through their arguments,
+
 $$
 -u_0(\vec x) \;-\; \big(-u_0(\vec x) - b(\vec x)\big) \;=\; b(\vec x),
 $$
+
 so the shared $-u_0(\vec x)$ cancels and only the bias survives in the exponent:
 
 $$
@@ -107,12 +113,15 @@ bottom line of the notes.
 
 The unknown constant $c_b/c$ drops out whenever the weights are normalized over a
 sample set $\{\vec x_i\}$,
+
 $$
 \widehat{W}(\vec x_i) = \frac{w(\vec x_i)}{\sum_j w(\vec x_j)}
 = \frac{\exp\!\big(b(\vec x_i)\big)}{\sum_j \exp\!\big(b(\vec x_j)\big)},
 $$
+
 so an unbiased ensemble average of any observable $A$ can be estimated purely from
 the bias values:
+
 $$
 \langle A\rangle_p \;\approx\; \sum_i \widehat{W}(\vec x_i)\,A(\vec x_i)
 \;=\; \frac{\sum_i A(\vec x_i)\,e^{\,b(\vec x_i)}}{\sum_i e^{\,b(\vec x_i)}}.
