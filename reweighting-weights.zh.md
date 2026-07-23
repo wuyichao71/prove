@@ -33,7 +33,7 @@ $$
 
 $$
 \overline{X}_N = \frac{1}{N}\sum_{i=1}^{N} X_i
- \xrightarrow[N \to \infty]{}  \mathbb{E}[X].
+\xrightarrow[N \to \infty]{}  \mathbb{E}[X].
 $$
 
 这使得*有限*样本成为平均值的合理估计。
@@ -42,7 +42,7 @@ $$
 
 $$
 \langle A\rangle = \int A(\mathbf{x}) \rho(\mathbf{x}) d\mathbf{x}
- \approx  \frac{1}{N}\sum_{i=1}^{N} A(\mathbf{x}_i).
+\approx  \frac{1}{N}\sum_{i=1}^{N} A(\mathbf{x}_i).
 $$
 
 **自由能则不同。** 上述估计只对真正的观测量成立。自由能*并非*观测量：它依赖配分函数——一个高维积分，无法从归一化的采样分布中直接得到，因为概率密度本身就是通过配分函数定义的，而对密度取平均也没有物理意义。这一空缺正是重加权要解决的：第 4 节的重加权估计就是把上面的样本平均给每一项乘上一个重要性权重，未知的归一化只以配分函数比 $c_b/c$ 的形式出现（第 4–5 节），并在权重归一化后相消。当偏置 $b\equiv 0$ 时，它退化为这里的普通样本平均。
@@ -83,9 +83,9 @@ $$
 
 $$
 w(\mathbf{x})  =  \frac{p(\mathbf{x})}{p_b(\mathbf{x})}
- = 
+= 
 \frac{\dfrac{1}{c} \exp\big(-u_0(\mathbf{x})\big)}
-     {\dfrac{1}{c_b} \exp\big(-u_0(\mathbf{x}) - b(\mathbf{x})\big)} .
+{\dfrac{1}{c_b} \exp\big(-u_0(\mathbf{x}) - b(\mathbf{x})\big)} .
 $$
 
 指数因子通过其宗量相减合并，
@@ -98,9 +98,9 @@ $$
 
 $$
 w(\mathbf{x})
- = 
+= 
 \frac{1}{c}\cdot\frac{\exp\big(b(\mathbf{x})\big)}{ 1/c_b }
- = 
+= 
 \boxed{ \frac{c_b}{c} \exp\big(b(\mathbf{x})\big)  }.
 $$
 
@@ -114,11 +114,11 @@ $$
 
 $$
 W(\mathbf{x})
- = 
+= 
 \frac{1}{c} 
 \frac{\exp\big(-u_0(\mathbf{x})\big)}
-     { c_b^{-1}\exp\big(-u_0(\mathbf{x}) - b(\mathbf{x})\big) }
- = 
+{ c_b^{-1}\exp\big(-u_0(\mathbf{x}) - b(\mathbf{x})\big) }
+= 
 \frac{c_b}{c} \exp\big(b(\mathbf{x})\big).
 $$
 
@@ -135,7 +135,7 @@ $$
 
 $$
 \langle A\rangle_p  \approx  \sum_i \widehat{W}(\mathbf{x}_i) A(\mathbf{x}_i)
- =  \frac{\sum_i A(\mathbf{x}_i) e^{ b(\mathbf{x}_i)}}{\sum_i e^{ b(\mathbf{x}_i)}}.
+=  \frac{\sum_i A(\mathbf{x}_i) e^{ b(\mathbf{x}_i)}}{\sum_i e^{ b(\mathbf{x}_i)}}.
 $$
 
 ---
