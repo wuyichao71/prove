@@ -70,13 +70,13 @@ $$
 L(k) = \prod_{i\in\mathrm{event}} k e^{-k t_i} \prod_{j\in\mathrm{cens}} e^{-k T_j} = k^{N_e} \exp(-k \mathcal{T}) ,
 $$
 
-其中 $N_e$ 是事件（成功跃迁）数，$\mathcal{T}=\sum_i t_i+\sum_j T_j$ 是所有轨迹的**总观测时间**。对数似然为 $\ell(k)=N_e\ln k - k\mathcal{T}$，同样令导数为零得
+其中 $N_e$ 是事件（成功跃迁）数， $\mathcal{T}=\sum_i t_i+\sum_j T_j$ 是所有轨迹的**总观测时间**。对数似然为 $\ell(k)=N_e\ln k - k\mathcal{T}$，同样令导数为零得
 
 $$
 k_{\mathrm{ML}} = \frac{N_e}{\mathcal{T}} , \qquad \boxed{\ \tau_{\mathrm{ML}} = \frac{\mathcal{T}}{N_e}\ } .
 $$
 
-即 MFPT 的估计等于**总观测时间除以跃迁次数**。当没有删失（$N_e=N$、$\mathcal{T}=\sum_i t_i$）时，即回到第 3 节的结果。
+即 MFPT 的估计等于**总观测时间除以跃迁次数**。当没有删失（ $N_e=N$、 $\mathcal{T}=\sum_i t_i$）时，即回到第 3 节的结果。
 
 ---
 
@@ -88,7 +88,7 @@ $$
 I(k) = -\frac{d^2\ell}{dk^2} = \frac{N_e}{k^2} .
 $$
 
-由最大似然估计的渐近性质，$k_{\mathrm{ML}}$ 的方差约为 $I^{-1}$：
+由最大似然估计的渐近性质， $k_{\mathrm{ML}}$ 的方差约为 $I^{-1}$：
 
 $$
 \mathrm{Var}(k_{\mathrm{ML}}) \approx \frac{k^2}{N_e} \quad\Longrightarrow\quad \frac{\sigma_k}{k} \approx \frac{1}{\sqrt{N_e}} .
@@ -106,7 +106,7 @@ $$
 
 ## 6. 注记
 
-- **泊松计数视角：** 在总时间 $\mathcal{T}$ 内发生 $N_e$ 次事件本身就是一个泊松过程，$k_{\mathrm{ML}}=N_e/\mathcal{T}$ 正是标准的计数速率估计。
+- **泊松计数视角：** 在总时间 $\mathcal{T}$ 内发生 $N_e$ 次事件本身就是一个泊松过程， $k_{\mathrm{ML}}=N_e/\mathcal{T}$ 正是标准的计数速率估计。
 - **偏差：** 完整观测下 $\tau_{\mathrm{ML}}=\frac{1}{N}\sum_i t_i$ 对 $\tau$ 无偏，即 $\mathbb{E}[\tau_{\mathrm{ML}}]=\tau$；而速率估计 $k_{\mathrm{ML}}$（样本均值的倒数）略有偏，指数分布下 $\mathbb{E}[k_{\mathrm{ML}}]=\frac{N}{N-1}k$，大 $N$ 时可忽略。
 - **适用范围：** 以上依赖单指数（无记忆）假设，需时间尺度分离才成立；多指数或非马尔可夫的首次通过时间需要更复杂的模型。
 

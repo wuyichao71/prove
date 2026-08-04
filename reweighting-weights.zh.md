@@ -117,7 +117,7 @@ W(\mathbf{x})
 = \frac{c_b}{c} \exp\big(b(\mathbf{x})\big).
 $$
 
-由于分母恰为 $p_b(\mathbf{x})$，结果与第 3 节相同：$W(\mathbf{x}) = w(\mathbf{x}) = \dfrac{c_b}{c}\exp\big(b(\mathbf{x})\big)$。这对应笔记的最后一行。
+由于分母恰为 $p_b(\mathbf{x})$，结果与第 3 节相同： $W(\mathbf{x}) = w(\mathbf{x}) = \dfrac{c_b}{c}\exp\big(b(\mathbf{x})\big)$。这对应笔记的最后一行。
 
 只要在样本集 $\{\mathbf{x}_i\}$ 上对权重做归一化，未知常数 $c_b/c$ 就自动消去：
 
