@@ -8,7 +8,7 @@
 
 在哈密顿力学中，一个系统的完整状态由广义坐标 $q$ 和广义动量 $p$ 共同确定，它们张成的空间称为**相空间**。系统随时间的演化对应相空间中的一条轨迹。
 
-在统计力学中，我们往往不关心单个系统，而关心大量全同系统构成的**系综**。此时用**相空间密度** $\rho(t, q, p)$ 描述系综在相空间中的分布： $\rho\,dq\,dp$ 表示 $t$ 时刻落在相空间体积元 $dq\,dp$ 内的系统数（比例）。
+在统计力学中，我们往往不关心单个系统，而关心大量全同系统构成的**系综**。此时用**相空间密度** $\rho(t, q, p)$ 描述系综在相空间中的分布： $\rho dq dp$ 表示 $t$ 时刻落在相空间体积元 $dq dp$ 内的系统数（比例）。
 
 **刘维尔定理**断言：随系统沿哈密顿流一起运动时，相空间密度保持不变；等价地，相空间体积元在演化中保持不变。直观图像是——相空间中的"概率流体"是**不可压缩的**。
 
@@ -45,7 +45,7 @@ $$
 
 - **相空间体积守恒：** 若某个（正则）变换把 $(q,p)$ 映为 $(Q,P)$，则
 $$
-dQ\,dP = dq\,dp.
+dQ dP = dq dp.
 $$
 
 **证明一**（连续性方程法）证明第一种表述；**证明二**（几何面积法）、**证明三**（时间演化的雅可比法）与**证明四**（正则变换法）从不同角度证明第二种表述。
@@ -71,8 +71,8 @@ $$
 
 $$
 \nabla\cdot(\rho\mathbf{v})
-= \frac{\partial}{\partial q}\big(\rho\,\dot q\big)
-+ \frac{\partial}{\partial p}\big(\rho\,\dot p\big)
+= \frac{\partial}{\partial q}\big(\rho \dot q\big)
++ \frac{\partial}{\partial p}\big(\rho \dot p\big)
 = \underbrace{\left(\frac{\partial \rho}{\partial q}\dot q + \frac{\partial \rho}{\partial p}\dot p\right)}_{(\mathbf{v}\cdot\nabla)\rho}
 + \rho\underbrace{\left(\frac{\partial \dot q}{\partial q} + \frac{\partial \dot p}{\partial p}\right)}_{\nabla\cdot\mathbf{v}}.
 $$
@@ -84,9 +84,9 @@ $$
 $$
 \nabla\cdot\mathbf{v}
 = \frac{\partial \dot q}{\partial q} + \frac{\partial \dot p}{\partial p}
-= \frac{\partial}{\partial q}\!\left(\frac{\partial H}{\partial p}\right)
-+ \frac{\partial}{\partial p}\!\left(-\frac{\partial H}{\partial q}\right)
-= \frac{\partial^2 H}{\partial q\,\partial p} - \frac{\partial^2 H}{\partial p\,\partial q}.
+= \frac{\partial}{\partial q}\left(\frac{\partial H}{\partial p}\right)
++ \frac{\partial}{\partial p}\left(-\frac{\partial H}{\partial q}\right)
+= \frac{\partial^2 H}{\partial q \partial p} - \frac{\partial^2 H}{\partial p \partial q}.
 $$
 
 只要 $H$ 二阶偏导连续，混合偏导可交换次序（Clairaut/Schwarz 定理），故
@@ -104,8 +104,8 @@ $$
 
 $$
 \frac{\partial \rho}{\partial t}
-= -\,\nabla\cdot(\rho\mathbf{v})
-= -\,\mathbf{v}\cdot\nabla\rho
+= - \nabla\cdot(\rho\mathbf{v})
+= - \mathbf{v}\cdot\nabla\rho
 = -\frac{\partial \rho}{\partial q}\dot q - \frac{\partial \rho}{\partial p}\dot p .
 $$
 
@@ -148,10 +148,10 @@ C=(q,\ p+\delta p),\quad
 D=(q+\delta q,\ p+\delta p),
 $$
 
-面积为 $\delta q\,\delta p$。经过无穷小时间 $\delta t$，每个相点按哈密顿流移动
+面积为 $\delta q \delta p$。经过无穷小时间 $\delta t$，每个相点按哈密顿流移动
 
 $$
-(q,\ p)\ \longrightarrow\ \big(q+\dot q(q,p)\,\delta t,\ \ p+\dot p(q,p)\,\delta t\big),
+(q,\ p)\ \longrightarrow\ \big(q+\dot q(q,p) \delta t,\ \ p+\dot p(q,p) \delta t\big),
 \qquad
 \dot q=\frac{\partial H}{\partial p},\quad \dot p=-\frac{\partial H}{\partial q}.
 $$
@@ -160,10 +160,10 @@ $$
 
 $$
 \begin{aligned}
-A&\longrightarrow\big(q+\dot q(q,p)\,\delta t,\ \ p+\dot p(q,p)\,\delta t\big),\\
-B&\longrightarrow\big(q+\delta q+\dot q(q+\delta q,p)\,\delta t,\ \ p+\dot p(q+\delta q,p)\,\delta t\big),\\
-C&\longrightarrow\big(q+\dot q(q,p+\delta p)\,\delta t,\ \ p+\delta p+\dot p(q,p+\delta p)\,\delta t\big),\\
-D&\longrightarrow\big(q+\delta q+\dot q(q+\delta q,p+\delta p)\,\delta t,\ \ p+\delta p+\dot p(q+\delta q,p+\delta p)\,\delta t\big).
+A&\longrightarrow\big(q+\dot q(q,p) \delta t,\ \ p+\dot p(q,p) \delta t\big),\\
+B&\longrightarrow\big(q+\delta q+\dot q(q+\delta q,p) \delta t,\ \ p+\dot p(q+\delta q,p) \delta t\big),\\
+C&\longrightarrow\big(q+\dot q(q,p+\delta p) \delta t,\ \ p+\delta p+\dot p(q,p+\delta p) \delta t\big),\\
+D&\longrightarrow\big(q+\delta q+\dot q(q+\delta q,p+\delta p) \delta t,\ \ p+\delta p+\dot p(q+\delta q,p+\delta p) \delta t\big).
 \end{aligned}
 $$
 
@@ -171,7 +171,7 @@ $$
 
 ![相空间无穷小面积元及其四条边界条带 S1–S4](fig-liouville-area-strips.svg)
 
-*图.* 无穷小面积元 $\delta q\times\delta p$（黑框）及其四条边界条带： $S_1,S_2$（左、右）来自沿 $q$ 方向的位移 $\dot q\,\delta t$； $S_3,S_4$（下、上）来自沿 $p$ 方向的位移 $\dot p\,\delta t$。前进边（右、上）扫出的面积记正，后退边（左、下）记负。
+*图.* 无穷小面积元 $\delta q\times\delta p$（黑框）及其四条边界条带： $S_1,S_2$（左、右）来自沿 $q$ 方向的位移 $\dot q \delta t$； $S_3,S_4$（下、上）来自沿 $p$ 方向的位移 $\dot p \delta t$。前进边（右、上）扫出的面积记正，后退边（左、下）记负。
 
 把演化后的面积写成"原矩形面积 $+$ 四条边界条带的净贡献"。记左、右、下、上四条边随流扫过的条带面积为 $S_1,S_2,S_3,S_4$（对应笔记图中的标注），面积改变量为
 
@@ -179,20 +179,20 @@ $$
 \Delta S=(S_2-S_1)+(S_4-S_3).
 $$
 
-**水平方向（左、右两条竖直边）。** 右边（在 $q+\delta q$ 处）与左边（在 $q$ 处）沿 $q$ 方向的位移分别是 $\dot q(q+\delta q,p)\,\delta t$ 与 $\dot q(q,p)\,\delta t$；两者之差乘以竖直边长 $\delta p$，即为右、左条带的面积差
+**水平方向（左、右两条竖直边）。** 右边（在 $q+\delta q$ 处）与左边（在 $q$ 处）沿 $q$ 方向的位移分别是 $\dot q(q+\delta q,p) \delta t$ 与 $\dot q(q,p) \delta t$；两者之差乘以竖直边长 $\delta p$，即为右、左条带的面积差
 
 $$
 S_2-S_1
-=\big[\dot q(q+\delta q,p)-\dot q(q,p)\big]\,\delta t\,\cdot\,\delta p
-=\frac{\partial \dot q}{\partial q}\,\delta q\,\delta p\,\delta t+O(\delta q^{2}).
+=\big[\dot q(q+\delta q,p)-\dot q(q,p)\big] \delta t \cdot \delta p
+=\frac{\partial \dot q}{\partial q} \delta q \delta p \delta t+O(\delta q^{2}).
 $$
 
 **竖直方向（上、下两条水平边）。** 同理，上边（在 $p+\delta p$ 处）与下边（在 $p$ 处）沿 $p$ 方向的位移之差乘以水平边长 $\delta q$
 
 $$
 S_4-S_3
-=\big[\dot p(q,p+\delta p)-\dot p(q,p)\big]\,\delta t\,\cdot\,\delta q
-=\frac{\partial \dot p}{\partial p}\,\delta p\,\delta q\,\delta t+O(\delta p^{2}).
+=\big[\dot p(q,p+\delta p)-\dot p(q,p)\big] \delta t \cdot \delta q
+=\frac{\partial \dot p}{\partial p} \delta p \delta q \delta t+O(\delta p^{2}).
 $$
 
 > 笔记中把每条条带当作梯形，用梯形面积公式逐项展开（第 4、5 张图），结果与上面的领头阶完全一致；更高阶的 $O(\delta t^{2})$、 $O(\delta^{3})$ 项可略去。
@@ -203,15 +203,15 @@ $$
 
 $$
 \Delta S=(S_2-S_1)+(S_4-S_3)
-=\left(\frac{\partial \dot q}{\partial q}+\frac{\partial \dot p}{\partial p}\right)\delta q\,\delta p\,\delta t
-=(\nabla\cdot\mathbf{v})\,\delta q\,\delta p\,\delta t.
+=\left(\frac{\partial \dot q}{\partial q}+\frac{\partial \dot p}{\partial p}\right)\delta q \delta p \delta t
+=(\nabla\cdot\mathbf{v}) \delta q \delta p \delta t.
 $$
 
 代入哈密顿方程 $\dot q=\partial H/\partial p$、 $\dot p=-\partial H/\partial q$，括号内正是相流散度，而
 
 $$
 \frac{\partial \dot q}{\partial q}+\frac{\partial \dot p}{\partial p}
-=\frac{\partial^{2} H}{\partial q\,\partial p}-\frac{\partial^{2} H}{\partial p\,\partial q}=0,
+=\frac{\partial^{2} H}{\partial q \partial p}-\frac{\partial^{2} H}{\partial p \partial q}=0,
 $$
 
 故
@@ -220,9 +220,9 @@ $$
 \boxed{\ \Delta S=0\ }.
 $$
 
-即演化后面积仍为 $\delta q\,\delta p$。对有限时间，把无穷小步逐次相乘，面积恒保持不变。 $\blacksquare$
+即演化后面积仍为 $\delta q \delta p$。对有限时间，把无穷小步逐次相乘，面积恒保持不变。 $\blacksquare$
 
-这与**证明三**（时间演化的雅可比法）是同一结论的两种算法：那里算 $\det J=1+(\nabla\cdot\mathbf{v})\,\delta t$，这里算 $\Delta S=(\nabla\cdot\mathbf{v})\,\delta q\,\delta p\,\delta t$——本质都是 $\nabla\cdot\mathbf{v}=0$。
+这与**证明三**（时间演化的雅可比法）是同一结论的两种算法：那里算 $\det J=1+(\nabla\cdot\mathbf{v}) \delta t$，这里算 $\Delta S=(\nabla\cdot\mathbf{v}) \delta q \delta p \delta t$——本质都是 $\nabla\cdot\mathbf{v}=0$。
 
 ---
 
@@ -234,41 +234,41 @@ $$
 
 $$
 (q,\ p)\ \longrightarrow\ (Q,\ P)
-= \left(\,q + \frac{\partial H}{\partial p}\,\delta t,\ \ p - \frac{\partial H}{\partial q}\,\delta t\,\right)
-= (q + \dot q\,\delta t,\ \ p + \dot p\,\delta t).
+= \left( q + \frac{\partial H}{\partial p} \delta t,\ \ p - \frac{\partial H}{\partial q} \delta t \right)
+= (q + \dot q \delta t,\ \ p + \dot p \delta t).
 $$
 
 计算此映射的雅可比矩阵，各元展开到 $O(\delta t)$：
 
 $$
-\frac{\partial Q}{\partial q} = 1 + \frac{\partial \dot q}{\partial q}\,\delta t,
+\frac{\partial Q}{\partial q} = 1 + \frac{\partial \dot q}{\partial q} \delta t,
 \quad
-\frac{\partial Q}{\partial p} = \frac{\partial \dot q}{\partial p}\,\delta t,
+\frac{\partial Q}{\partial p} = \frac{\partial \dot q}{\partial p} \delta t,
 \quad
-\frac{\partial P}{\partial q} = \frac{\partial \dot p}{\partial q}\,\delta t,
+\frac{\partial P}{\partial q} = \frac{\partial \dot p}{\partial q} \delta t,
 \quad
-\frac{\partial P}{\partial p} = 1 + \frac{\partial \dot p}{\partial p}\,\delta t,
+\frac{\partial P}{\partial p} = 1 + \frac{\partial \dot p}{\partial p} \delta t,
 $$
 
 于是
 
 $$
 \det J
-= \left(1 + \frac{\partial \dot q}{\partial q}\delta t\right)\!\left(1 + \frac{\partial \dot p}{\partial p}\delta t\right)
-- \left(\frac{\partial \dot q}{\partial p}\delta t\right)\!\left(\frac{\partial \dot p}{\partial q}\delta t\right)
+= \left(1 + \frac{\partial \dot q}{\partial q}\delta t\right)\left(1 + \frac{\partial \dot p}{\partial p}\delta t\right)
+- \left(\frac{\partial \dot q}{\partial p}\delta t\right)\left(\frac{\partial \dot p}{\partial q}\delta t\right)
 = 1 + \left(\frac{\partial \dot q}{\partial q} + \frac{\partial \dot p}{\partial p}\right)\delta t + O(\delta t^2).
 $$
 
 括号里正是相流的散度 $\nabla\cdot\mathbf{v}$，而证明一已证 $\nabla\cdot\mathbf{v} = 0$，故
 
 $$
-\boxed{\ \det J = 1 + (\nabla\cdot\mathbf{v})\,\delta t + O(\delta t^2) = 1\ }
+\boxed{\ \det J = 1 + (\nabla\cdot\mathbf{v}) \delta t + O(\delta t^2) = 1\ }
 \quad\Longrightarrow\quad
-dQ\,dP = dq\,dp .
+dQ dP = dq dp .
 \qquad\blacksquare
 $$
 
-对有限时间，只需把无穷小步连乘，行列式仍恒为 1。它与证明二（几何面积法）算的 $\Delta S=(\nabla\cdot\mathbf{v})\,\delta q\,\delta p\,\delta t$ 是同一件事的两种算法，也把体积不变接回了证明一：**"散度为零"与"雅可比为一"是同一件事的一阶体现**。
+对有限时间，只需把无穷小步连乘，行列式仍恒为 1。它与证明二（几何面积法）算的 $\Delta S=(\nabla\cdot\mathbf{v}) \delta q \delta p \delta t$ 是同一件事的两种算法，也把体积不变接回了证明一：**"散度为零"与"雅可比为一"是同一件事的一阶体现**。
 
 ---
 
@@ -287,7 +287,7 @@ $$
 新旧体积元由雅可比行列式联系：
 
 $$
-dQ\,dP = \left|\frac{\partial(Q,P)}{\partial(q,p)}\right|\,dq\,dp,
+dQ dP = \left|\frac{\partial(Q,P)}{\partial(q,p)}\right| dq dp,
 \qquad
 \frac{\partial(Q,P)}{\partial(q,p)}
 = \frac{\partial Q}{\partial q}\frac{\partial P}{\partial p}
@@ -295,7 +295,7 @@ dQ\,dP = \left|\frac{\partial(Q,P)}{\partial(q,p)}\right|\,dq\,dp,
 \equiv \{Q, P\},
 $$
 
-其中最后一步认出这正是 $Q$、 $P$ 的**泊松括号** $\{Q,P\}$。因此只要证明 $\{Q,P\}=1$，就有 $dQ\,dP = dq\,dp$。
+其中最后一步认出这正是 $Q$、 $P$ 的**泊松括号** $\{Q,P\}$。因此只要证明 $\{Q,P\}=1$，就有 $dQ dP = dq dp$。
 
 **证明 $\{Q,P\}=1$**（笔记所用思路：把新变量的时间导数用链式法则展开，再对照它满足的哈密顿方程）。
 
@@ -343,7 +343,7 @@ $$
 = \frac{\partial Q}{\partial q}\frac{\partial P}{\partial p}
 - \frac{\partial Q}{\partial p}\frac{\partial P}{\partial q}
 = \frac{\partial p}{\partial P}\frac{\partial q}{\partial Q}
-- \left(-\frac{\partial q}{\partial P}\right)\!\left(-\frac{\partial p}{\partial Q}\right)
+- \left(-\frac{\partial q}{\partial P}\right)\left(-\frac{\partial p}{\partial Q}\right)
 = \frac{\partial q}{\partial Q}\frac{\partial p}{\partial P}
 - \frac{\partial q}{\partial P}\frac{\partial p}{\partial Q}.
 $$
@@ -359,7 +359,7 @@ $$
 故 $\{Q,P\} = \{Q,P\}^{-1}$，即 $\{Q,P\}^2 = 1$。取与恒等变换连续相连的分支 $\{Q,P\}=+1$。于是
 
 $$
-\boxed{\ \{Q,P\} = 1\ } \quad\Longrightarrow\quad \boxed{\ dQ\,dP = dq\,dp\ }.
+\boxed{\ \{Q,P\} = 1\ } \quad\Longrightarrow\quad \boxed{\ dQ dP = dq dp\ }.
 $$
 
 **这就是正则变换下相空间体积不变性**：任何正则变换都保持相空间体积元。
@@ -385,12 +385,12 @@ $$
 = \{H, \rho\}.
 $$
 
-> 符号约定：在 $\{A,B\}=\partial_q A\,\partial_p B - \partial_p A\,\partial_q B$ 下， $\partial\rho/\partial t = \{H,\rho\} = -\{\rho,H\}$。不同教材的符号可能相差一个负号，请以所用泊松括号定义为准。
+> 符号约定：在 $\{A,B\}=\partial_q A \partial_p B - \partial_p A \partial_q B$ 下， $\partial\rho/\partial t = \{H,\rho\} = -\{\rho,H\}$。不同教材的符号可能相差一个负号，请以所用泊松括号定义为准。
 
 这与量子力学中密度算符 $\hat\rho$ 满足的 **von Neumann 方程**
 
 $$
-i\hbar\,\frac{\partial \hat\rho}{\partial t} = [\hat H, \hat\rho]
+i\hbar \frac{\partial \hat\rho}{\partial t} = [\hat H, \hat\rho]
 $$
 
 一一对应——经典泊松括号 $\{\cdot,\cdot\}$ 对应量子对易子 $\tfrac{1}{i\hbar}[\cdot,\cdot]$，这是经典—量子对应的一个典型体现。
@@ -405,9 +405,9 @@ $$
 
 - **统计力学基础：** 刘维尔定理是**微正则系综**中"等概率假设"的动力学依据：在能量壳层上均匀的密度分布 $\rho = \text{const}$ 是刘维尔方程的定态解（ $\partial\rho/\partial t = 0$），因而是自然的平衡态分布。
 
-- **各证明的统一：** 证明一的核心 $\nabla\cdot\mathbf{v} = 0$、证明二的面积改变量 $\Delta S=(\nabla\cdot\mathbf{v})\,\delta q\,\delta p\,\delta t$ 与证明三的 $\det J = 1+(\nabla\cdot\mathbf{v})\,\delta t$ **本质是同一件事**（证明四则从正则变换的辛结构给出 $\{Q,P\}=1$）——因为雅可比行列式展开到一阶恰为
+- **各证明的统一：** 证明一的核心 $\nabla\cdot\mathbf{v} = 0$、证明二的面积改变量 $\Delta S=(\nabla\cdot\mathbf{v}) \delta q \delta p \delta t$ 与证明三的 $\det J = 1+(\nabla\cdot\mathbf{v}) \delta t$ **本质是同一件事**（证明四则从正则变换的辛结构给出 $\{Q,P\}=1$）——因为雅可比行列式展开到一阶恰为
 $$
-\det J = 1 + (\nabla\cdot\mathbf{v})\,\delta t + O(\delta t^2),
+\det J = 1 + (\nabla\cdot\mathbf{v}) \delta t + O(\delta t^2),
 $$
 散度为零 $\iff$ 一阶体积变化率为零 $\iff$ 体积守恒。前者是微分（局部、瞬时）视角，后者是积分（整体、有限步）视角，二者互为表里。
 
