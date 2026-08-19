@@ -2,7 +2,9 @@
 
 > A cleaned-up write-up of handwritten notes. It derives the importance-sampling
 > weight that converts samples drawn from a *biased* Boltzmann distribution back
-> into expectation values under the *unbiased* target distribution.
+> into expectation values under the *unbiased* target distribution, and then
+> extends it to combining several biased simulations by maximum likelihood — the
+> WHAM equations.
 
 ---
 
@@ -170,7 +172,80 @@ $$
 
 ---
 
-## 5. Remark
+## 5. Combining several biased simulations: the WHAM equations (a maximum-likelihood derivation)
+
+The first four sections reweight *one* biased distribution $p_b$ back to the unbiased $p$. In practice one often has $S$ separately biased simulations (e.g. the windows of an umbrella-sampling run) whose individual histograms must be combined into a single unbiased distribution. The **weighted histogram analysis method (WHAM)** is exactly the maximum-likelihood solution of that combination. This section transcribes a second page of the notes (a multinomial likelihood plus Lagrange multipliers).
+
+**Notation.** Let there be $S$ simulation windows ($i=1,\dots,S$) and partition configuration space into $M$ bins ($j=1,\dots,M$). Let $n_{ij}$ be the count of window $i$ in bin $j$, with total sample size $N_i=\sum_{j} n_{ij}$. The known bias factor is $C_{ij}$ (for instance $C_{ij}=e^{-b_i(\mathbf{x}_j)}$, fixed by the applied bias). The unknowns are the unbiased bin probabilities $P_j^{0}$ and the per-window normalization constants $f_i$; the model takes the probability of window $i$ in bin $j$ to be
+
+$$
+P_{ij}=P_j^{0} C_{ij} f_i .
+$$
+
+**Multinomial likelihood.** Each window's counts are multinomially distributed:
+
+$$
+L_i=\frac{N_i!}{\prod_{j} n_{ij}!}\prod_{j=1}^{M} P_{ij}^{n_{ij}}
+=\frac{N_i!}{\prod_{j} n_{ij}!}\prod_{j=1}^{M}\big(P_j^{0} C_{ij} f_i\big)^{n_{ij}} .
+$$
+
+The windows are independent, so $L=\prod_{i=1}^{S} L_i$. Taking the logarithm and dropping parameter-independent constants,
+
+$$
+\ell=\ln L \propto \sum_{i=1}^{S}\sum_{j=1}^{M} n_{ij}\ln\big(P_j^{0} C_{ij} f_i\big) .
+$$
+
+**Constraint and Lagrangian.** Each window's distribution must normalize, which also defines $f_i$:
+
+$$
+\sum_{j=1}^{M} P_j^{0} C_{ij} f_i = 1 .
+$$
+
+Introduce a multiplier $\lambda_i$ for each constraint:
+
+$$
+F=\ell+\sum_{i=1}^{S}\lambda_i\Big(\sum_{j=1}^{M} P_j^{0} C_{ij} f_i\Big) .
+$$
+
+**Differentiate in $f_i$ to fix the multiplier.** Setting $\partial F/\partial f_i=0$,
+
+$$
+\frac{\partial F}{\partial f_i}=\frac{\sum_{j} n_{ij}}{f_i}+\lambda_i\sum_{j=1}^{M} P_j^{0} C_{ij}=0 .
+$$
+
+Using the normalization $\sum_{j} P_j^{0} C_{ij} f_i=1$ and the total $\sum_{j} n_{ij}=N_i$, multiply through by $f_i$ to get $N_i+\lambda_i=0$, hence
+
+$$
+\boxed{\ \lambda_i=-N_i\ } .
+$$
+
+**Differentiate in $P_j^{0}$ to fix the probabilities.** Setting $\partial F/\partial P_j^{0}=0$,
+
+$$
+\sum_{i=1}^{S}\Big(\frac{n_{ij}}{P_j^{0}}+\lambda_i C_{ij} f_i\Big)=0
+\quad\Longrightarrow\quad
+\frac{\sum_{i} n_{ij}}{P_j^{0}}=-\sum_{i}\lambda_i C_{ij} f_i .
+$$
+
+Substituting $\lambda_i=-N_i$ gives the unbiased bin probabilities:
+
+$$
+\boxed{\ P_j^{0}=\frac{\sum_{i=1}^{S} n_{ij}}{\sum_{i=1}^{S} N_i C_{ij} f_i}\ } .
+$$
+
+**Self-consistent equations.** The normalization constraint in turn writes each window constant as
+
+$$
+\boxed{\ f_i^{-1}=\sum_{j=1}^{M} C_{ij} P_j^{0}\ } .
+$$
+
+The two boxed equations are coupled: $P_j^{0}$ depends on $f_i$ and $f_i$ depends on $P_j^{0}$. In practice they are solved by iteration — guess a set of $f_i$, compute $P_j^{0}$, update $f_i$, and repeat to convergence. This is precisely what WHAM (and its binless generalization MBAR) does: stitch the histograms of many biased simulations into one unbiased distribution $P_j^{0}$ through a single set of maximum-likelihood self-consistency equations.
+
+**Connection to the single-bias case.** With a single window ($S=1$) the result reduces to $P_j^{0}\propto n_{1j}/C_{1j}$ — reweighting that one biased histogram by $1/C_{1j}$. Taking $C_{1j}=e^{-b(\mathbf{x}_j)}$ this is multiplication by $e^{b(\mathbf{x}_j)}$, exactly the weight of §3–§4; WHAM simply generalizes that reweighting to many histograms and uses maximum likelihood to pin down the relative normalizations $f_i$.
+
+---
+
+## 6. Remark
 
 The whole derivation rests on one cancellation: because $p$ and $p_b$ share the
 same underlying potential $u_0$, their ratio keeps no dependence on $u_0$ — only
